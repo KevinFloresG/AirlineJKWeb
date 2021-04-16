@@ -6,7 +6,7 @@ function loginInit(){
 }
 
 function getLoggedUser(){
-    let data = sessionStorage.getItem('userName')
+    let data = sessionStorage.getItem('user')
     //let access = sessionStorage.getItem('userAccess')
     if(data !== null){
         let userDiv = $("#currentUser"), loginBtn = $("#iniciarS")
@@ -54,8 +54,9 @@ async function endLogin(x){
         let id = $("#username").val();
         const response = await fetch("/AirlineJK/users/get?id="+id)
         const user = await response.json()
-        sessionStorage.setItem('userName', user.name + " " + user.lastname)
-        sessionStorage.setItem('userAccess', user.isAdmin)
+        sessionStorage.setItem('user', user.name + " " + user.lastname)
+        sessionStorage.setItem('username', user.username)
+        sessionStorage.setItem('useraccess', user.isAdmin)
         $("#currentUser").html()
         getLoggedUser()
         $("#loginModal").modal("hide")

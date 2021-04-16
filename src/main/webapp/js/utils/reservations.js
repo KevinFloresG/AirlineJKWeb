@@ -3,4 +3,8 @@ async function reservationsByUser(username){
     return await response.json()
 }
 
-export {reservationsByUser};
+function checkinStatus(r){
+    return r.seatQuantity !== r.checkedInQuantity?"Pendiente":"Realizado"
+}
+
+export {reservationsByUser, checkinStatus};
