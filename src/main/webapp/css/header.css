@@ -1,0 +1,43 @@
+#navbar{
+    background-color: #706b7d;
+}
+
+#firm{
+    min-height: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.dropdown-toggle::after {
+   transition: transform 0.20s linear; 
+}
+
+.show.dropdown .dropdown-toggle::after {
+  transform: translateY(7px);
+}
+
+.navbar .nav-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.logged{
+    background-color: #007bff;
+}
+
+.color-me{
+    color:white !important;
+    border-radius: 10px;
+}
+
+.color-me:hover{
+    background-color: #0c344E;
+    color: white;
+}
+
+.navbar-toggler{
+    border-color: white !important;
+}
+
+.fa-l-blue{
+    color: #249DD8;
+}

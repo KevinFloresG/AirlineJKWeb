@@ -1,0 +1,285 @@
+<html lang="es" >
+<head>
+	<title>SIGN IN - Aerolinea Flores & Amador</title>
+	<meta charset="UTF-8">
+	<link href="css/header.css" rel="stylesheet" type="text/css">
+	<link href="css/standardPage.css" rel="stylesheet" type="text/css">
+	<link href="css/styleLogin.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+</head>
+<body>
+<!-- Headband -->
+<div class="container-fluid badge-dark">
+	<img id="firm" class="img-fluid" src="images/airlineFirm.png" alt="firm">
+</div>
+<!-- Header -->
+<nav id="navbar" class="navbar navbar-expand-md navbar-dark sticky-top">
+	<button class="navbar-toggler color-me" data-toggle="collapse" data-target="#collapse_header">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- Menu Options -->
+	<div class="collapse navbar-collapse" id="collapse_header">
+		<ul class="navbar-nav">
+		<li class="nav-item">
+			<a href="#" class="nav-link color-me">Inicio</a>
+		</li>	
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="userOptions">Usuario<span class="caret"></span></a>
+				<div class="dropdown-menu" aria-labelledby="userOptions">
+					<a href="userInformation.html" class="dropdown-item">Información Personal</a>
+					<a href="userReservations.html" class="dropdown-item">Mis reservaciones </a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="flightsOptions">Vuelos<span class="caret"></span></a>
+				<div class="dropdown-menu" aria-labelledby="flightsOptions">
+					<a href="#" class="dropdown-item"> Agregar un Vuelo </a>
+					<a href="#" class="dropdown-item"> Listado de Vuelos </a>
+					<a href="#" class="dropdown-item"> Buscar Vuelos </a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="planesOptions">Aviones<span class="caret"></span></a>
+				<div class="dropdown-menu" aria-labelledby="planesOptions">
+					<a href="#" class="dropdown-item"> Listado de Aviones </a>
+					<a href="#" class="dropdown-item"> Listado de Tipos de Aviones </a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="placesOptions">Rutas<span class="caret"></span></a>
+				<div class="dropdown-menu" aria-labelledby="placesOptions">
+					<a href="#" class="dropdown-item"> Listado de Rutas </a>
+					<a href="#" class="dropdown-item"> Listado de Horarios </a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="placesOptions">Destinos<span class="caret"></span></a>
+				<div class="dropdown-menu" aria-labelledby="placesOptions">
+					<a href="#" class="dropdown-item"> Listado de Ciudades </a>
+					<a href="#" class="dropdown-item"> Listado de Países </a>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a href="#" class="nav-link color-me">Reportes</a>
+			</li>
+		</ul>
+	</div>
+	
+	<button type="button" class="btn text-white btn-link" style="float: right" id="iniciarS" data-toggle="modal" data-target="#loginModal">Log In</button>
+	<button type="button" class="btn text-white btn-link" style="float: right" id="currentUser" hidden></button>
+	<button type="button" class="btn text-white btn-link" style="float: right" id="logout" hidden>Log Out</button>
+</nav>
+<!-- Content -->
+<div class="content-fluid" style="background-image: url('images/airport4k.jpg'); height: 100%; witdth: 100%;">
+<br>  
+ <div class="row mt-3">
+        <div class="col-md-1"></div>
+        <!-- Principal Container -->
+        <div class="col-md-10 pt-3 principal-container" style="opacity: 0.95;">
+            <div id="officerFormDiv">
+                <div class="title container-fluid">Sign In</div>
+                <br>
+                <form id="userForm" class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label for="username"> <b>Username</b></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="username" maxlength="20" placeholder="Nombre de Usuario" required>
+                                <button title="Validar si el nombre de usuario esta disponible." id="checkUsername" type="button" class="btn btn-primary"> <i class="fas fa-search"></i></button>
+                                <div class="invalid-feedback">
+                                    Debe indicar un nombre de usuario.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="name"> <b>Nombre </b> </label>
+                            <input type="text" class="form-control" id="name" placeholder="Nombre" required>
+                            <div class="invalid-feedback">
+                                Debe indicar su nombre.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="lastName1"><b>1er Apellido</b></label>
+                            <input type="text" class="form-control" id="lastName1" placeholder="1er Apellido" required>
+                            <div class="invalid-feedback">
+                                Debe indicar su primer apellido.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="lastName2"><b>2do Apellido</b></label>
+                            <input type="text" class="form-control" id="lastName2" placeholder="2do Apellido" required>
+                            <div class="invalid-feedback">
+                                 Debe indicar su segundo apellido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label for="dateOfBirth"><b>Fecha de Nacimiento</b></label>
+                            <input type="date" class="form-control" id="dateOfBirth" required>
+                            <div class="invalid-feedback">
+                                Debe indicar su fecha de nacimiento.
+                            </div>
+						</div>	
+						<div class="col-md-3 mb-3">
+                            <label for="email"><b>Correo Electrónico</b></label>
+                            <input type="text" class="form-control" id="email" placeholder="Correo Electrónico" required>
+                            <div class="invalid-feedback">
+                                Debe registrar su email.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="workphone"><b>Teléfono de trabajo</b></label>
+                            <input type="text" maxlength="15" class="form-control" id="workphone" placeholder="Ej: 22222222" required>
+                            <div class="invalid-feedback">
+                                Debe registrar el número de teléfono de su trabajo.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cellphone"><b>Teléfono Personal</b></label>
+                            <input type="text" maxlength="15" class="form-control" id="cellphone" placeholder="Ej: 88888888">
+                        </div>
+                        </div>
+                    
+                    <div class="form-row">
+						<div class="col-md-4 mb-3"> </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="address"><b>Dirección</b></label>
+                            <textarea id="address" class="form-control" style="resize: none;" rows="3" cols="50" placeholder="Dirección" required></textarea>
+                            <div class="invalid-feedback">
+                                Se debe registrar una dirección.
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                        <button class="btn btn-lg btn-primary mt-3" type="submit" id="registerUser">Registrar</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img id="airplane-icon" src="images/planeLogo.png" class="img-fluid" alt="airplane-icon">
+            </div>
+            <div class="col-md-6 vl">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <h4>Acerca del sistema</h4>
+                            <small class="text-justify">
+                                <div>
+                                    Este es un sistema de gestión de vuelos para clientes y administradores realizado
+									como un laboratorio de repaso del curso Diseño y Programación de Plataformas Móviles.
+                                    
+                                </div>
+                            </small>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Información</h4>
+                            <small>
+                                <div class="mb-1">
+                                    <b>Contacto por correo #1: </b>
+                                    <p>java6464@gmail.com</p>
+                                </div>
+                                <div class="mb-1">
+                                    <b>Contacto por correo #2: </b>
+                                    <p>kevinfg1413@gmail.com</p>
+                                </div>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center pb-3">
+        © Flores & Amador S.A. - Tel. 0000-0000
+    </div>
+</footer>
+
+<!-- Success Modal -->
+<center>
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="successModal" style="">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div id="successModalBody" class="modal-body"> Operación Realizada Exitosamente  
+                </div>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</center>
+<!-- End of Success Modal -->
+
+<!-- Log In Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  
+		<form id="loginForm" class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div id="login" class="col-md-6 p-4">
+                            <h1 class="text-center pt-2"> LOGIN </h1>
+                            <label for="username">Usuario</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="fa fa-user input-group-text"></span>
+                                </div>
+                                <input type="text" class="form-control" id="username" placeholder="Usuario" required>
+                                <div id="username-fb" class="invalid-feedback">
+                                    Por favor ingrese un usuario.
+                                </div>
+                            </div>
+                            <label class="pt-3" for="password">Contraseña</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="fa fa-lock input-group-text"></span>
+                                </div>
+                                <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                                <div id="password-fb" class="invalid-feedback">
+                                    Por favor ingrese una contraseña.
+                                </div>
+                            </div>
+                            <div id="login-error" class="text-center text-danger mt-4">
+                                <span>Usuario o contraseña inválida.</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <button class="btn btn-block btn-primary my-4" type="submit">Ingresar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+body {
+    background-color: white !important;
+
+}
+
+.NAVIGATION {
+  overflow: hidden;
+  background-color: #204C6F;
+  height: 50px;
+}
+
+/* Links inside the navbar */
+.NAVIGATION a {
+  float: left;
+  display: block;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Change background on mouse-over */
+.NAVIGATION a:hover {
+  background: #2980B9;
+  color: #FFFFFF;
+}
+
+.my-custom-scrollbar {
+position: relative;
+height: 400px;
+overflow: auto;
+left: 10px;
+}
+
+.table-wrapper-scroll-y {
+display: block;
+}
+
+#principal-container{
+  background-color: #CCCCCC;
+  border-radius:10px;
+}
+

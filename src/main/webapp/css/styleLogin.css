@@ -1,0 +1,53 @@
+
+body:not(.modal-open){
+  padding-right: 0px !important;
+}
+
+#firm{
+    min-height: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#login{
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+#login label{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #666666;
+    font-size: 24px;
+}
+
+#login h1{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #41ade7;
+    font-size: 32px;
+}
+
+#login-error span{
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 15px;
+}
+
+footer{
+    background-color: #706b7d;
+}
+
+.vl {
+    border-left: 2px solid#FFFFFF;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.vl small{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+
+#airplane-icon{
+    margin-top:4%;
+    margin-bottom:3%;
+    max-height: 200px;
+}
