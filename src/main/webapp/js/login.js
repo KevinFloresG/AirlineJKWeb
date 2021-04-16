@@ -1,52 +1,67 @@
-$(load);
-
-let access = false;
-
-function load(){
-
-    $("#login-error").hide();
-    $("#loginForm").submit(e=>verifyInputs(e, verifyCredencials));
+function loginInit(){
+    getLoggedUser()
+    $("#login-error").hide()
+    $("#currentUser").on("click", getOut)
+    $("#loginForm").submit(e=>verifyInputs(e, verifyCredencials))
 }
 
-function verifyCredencials(){
-    let user = { id:$("#username").val(), password:$("#password").val()};
-    $.ajax(
-        {
-            type:"POST",
-            url:"/api/v1/login",
-            data:JSON.stringify(user),
-            contentType:"application/json"
-        }
-    ).then(a => endLogin(a), ()=>endLogin(false));
+function getLoggedUser(){
+    let data = sessionStorage.getItem('userName')
+    //let access = sessionStorage.getItem('userAccess')
+    if(data !== null){
+        let userDiv = $("#currentUser"), loginBtn = $("#iniciarS")
+        userDiv.text(data+" - Salir")
+        userDiv.show()
+        loginBtn.text("")
+        loginBtn.hide()
+    }
 }
-/*function endLogin(x){
-    x?getUserData():$("#login-error").show(500)
-}*/
-function endLogin(x){
-    x?getUserData():$("#login-error").show(500)
-}
-function getUserData(){
 
-    let id = $("#username").val();
-    $.ajax({type: "GET", url:"/api/v1/user/"+id,contentType: "application/json"})
-    .then( (user)=>{userStorage(user);},
-           (error)=>{ 
-               //errorMessage(error.status,$("#errorDiv"));
-           });  
+function getOut(){
+    sessionStorage.clear()
+    location.href="/AirlineJKWeb"
 }
-function userStorage(user){
-    sessionStorage.setItem('userName', user.name + " " + user.lastName_1);
-    location.href="index.html";
+
+async function verifyCredencials(){
+    let user = { username:$("#username").val(), password:$("#password").val()}
+    let requestBody = {
+        method:"POST",
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(user)
+    }
+    const response = await fetch("/AirlineJK/users/login", requestBody)
+    const result = await response.json()
+    endLogin(result)
 }
+
 function verifyInputs(event, f){
-    let form = document.getElementById('loginForm');
-    $("#login-error").hide();
+    let form = document.getElementById('loginForm')
+    $("#login-error").hide()
     if (form.checkValidity() === false) {
         event.preventDefault()
         event.stopPropagation()
     }else{
-        f();
-        event.preventDefault();
+        f()
+        event.preventDefault()
     }
     form.classList.add('was-validated')
 }
+
+async function endLogin(x){
+    if(x){
+        let id = $("#username").val();
+        const response = await fetch("/AirlineJK/users/get?id="+id)
+        const user = await response.json()
+        sessionStorage.setItem('userName', user.name + " " + user.lastname)
+        sessionStorage.setItem('userAccess', user.isAdmin)
+        $("#currentUser").html()
+        getLoggedUser()
+        $("#loginModal").modal("hide")
+    }else{
+        $("#login-error").show(500)
+    }
+}
+
+export {loginInit, getLoggedUser};
