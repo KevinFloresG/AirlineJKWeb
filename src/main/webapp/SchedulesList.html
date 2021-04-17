@@ -24,34 +24,34 @@
 	<button class="navbar-toggler color-me" data-toggle="collapse" data-target="#collapse_header">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<!-- Menu Options -->
+<!-- Menu Options -->
 	<div class="collapse navbar-collapse" id="collapse_header">
 		<ul class="navbar-nav">
 			<li class="nav-item">
 				<a href="Index.html" class="nav-link color-me">Inicio</a>
 			</li>	
-			<li class="nav-item dropdown" id="userOptionsL">
+			<li class="nav-item dropdown" id="userOptionsL" hidden>
 				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="userOptions">Usuario<span class="caret"></span></a>
 				<div class="dropdown-menu" aria-labelledby="userOptions">
 					<a href="UserInformation.html" class="dropdown-item">Información Personal</a>
-					<a href="UserReservations.html" class="dropdown-item">Mis reservaciones </a>
+					<a href="UserReservations.html" class="dropdown-item" id="userReservationO" hidden>Mis reservaciones </a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="flightsOptions">Vuelos<span class="caret"></span></a>
 				<div class="dropdown-menu" aria-labelledby="flightsOptions">
-					<a href="FlightsList.html" class="dropdown-item" id="adminFlightList"> Listado de Vuelos </a>
+					<a href="FlightsList.html" class="dropdown-item" id="adminFlightList" hidden> Listado de Vuelos </a>
 					<a href="FlightSearch.html" class="dropdown-item" id="userFlightList"> Buscar Vuelos </a>
 				</div>
 			</li>
-			<li class="nav-item dropdown" id="planesList">
+			<li class="nav-item dropdown" id="planesList" hidden>
 				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="planesOptions">Aviones<span class="caret"></span></a>
 				<div class="dropdown-menu" aria-labelledby="planesOptions">
 					<a href="AirplanesList.html" class="dropdown-item"> Listado de Aviones </a>
 					<a href="AirplaneTypesList.html" class="dropdown-item"> Listado de Tipos de Aviones </a>
 				</div>
 			</li>
-			<li class="nav-item dropdown" id="routesList">
+			<li class="nav-item dropdown" id="routesList" hidden>
 				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="routesOptions">Rutas<span class="caret"></span></a>
 				<div class="dropdown-menu" aria-labelledby="placesOptions">
 					<a href="RoutesList.html" class="dropdown-item"> Listado de Rutas </a>
@@ -64,21 +64,28 @@
 					<a href="PRoutesList.html" class="dropdown-item"> Ver Rutas </a>
 				</div>
 			</li>
-			<li class="nav-item dropdown" id="destinationsList">
+			<li class="nav-item dropdown" id="destinationsList" hidden>
 				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="placesOptions">Destinos<span class="caret"></span></a>
 				<div class="dropdown-menu" aria-labelledby="placesOptions">
 					<a href="CitiesList.html" class="dropdown-item"> Listado de Ciudades </a>
 					<a href="CountriesList.html" class="dropdown-item"> Listado de Países </a>
 				</div>
 			</li>
-			<li class="nav-item" id="reports">
+			<li class="nav-item" id="checkInOpt" hidden>
+				<a href="CheckIn.html" class="nav-link color-me">Check In</a>
+			</li>
+			<li class="nav-item" id="signInOpt">
+				<a href="SignIn.html" class="nav-link color-me">Registrarse</a>
+			</li>
+			<li class="nav-item" id="reports" hidden>
 				<a href="Reports.html" class="nav-link color-me">Reportes</a>
 			</li>
 		</ul>
 	</div>
-	
-	<button type="button" class="btn text-white btn-link" style="float: right" id="currentUser">Javier Amador  </button>
-	<button type="button" class="btn text-white btn-link" style="float: right" id="logout">Log Out</button>
+
+	<button type="button" class="btn text-white btn-link" style="float: right" id="iniciarS" data-toggle="modal" data-target="#loginModal">Log In</button>
+	<button type="button" class="btn text-white btn-link" style="float: right" id="currentUser"></button>
+	<button type="button" class="btn text-white btn-link" style="float: right" id="logOut" hidden></button>
 </nav>
 <!-- Content -->
 <div class="content-fluid" style="background-image: url('images/airport4k.jpg'); height: 100%; witdth: 100%;">

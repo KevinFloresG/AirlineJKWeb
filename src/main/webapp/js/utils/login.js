@@ -7,13 +7,18 @@ function loginInit(){
 
 function getLoggedUser(){
     let data = sessionStorage.getItem('user')
-    //let access = sessionStorage.getItem('userAccess')
     if(data !== null){
+        
         let userDiv = $("#currentUser"), loginBtn = $("#iniciarS")
         userDiv.text(data+" - Salir")
         userDiv.show()
         loginBtn.text("")
         loginBtn.hide()
+        
+        let access = sessionStorage.getItem('userAccess')
+        
+        if(access===0)
+            showUserOptions()
     }
 }
 
@@ -63,6 +68,12 @@ async function endLogin(x){
     }else{
         $("#login-error").show(500)
     }
+}
+
+function showUserOptions(){
+    $("#userOptionsL").show()
+    $("#checkInOpt").show()
+    $("#signInOpt").show()
 }
 
 export {loginInit};
