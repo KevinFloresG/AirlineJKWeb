@@ -1,12 +1,13 @@
 import {WSflight, typeOfFlight, datesOfFlight} from './utils/flight.js'
 
-let wsflight
+let wsflight, GlobalFlight;
 
 $(load)
 
 function load(){
     wsflight = WSflight()
     wsflight.onmessage = function(event){processMsg(event)}
+    $("#deleteFlight").on("click", ()=>deleteFlight(GlobalFlight))
 }
 
 function sendMsg(obj){
@@ -53,17 +54,28 @@ function flightTr(f, type){
         let tbody = $("#flightsList")
         let tr = $('<tr id="tr-'+f.id+'" class="d-flex" />')
         tr.html(trContent)
-        //tr.find("#edit-"+f.id).on("click",()=>...)
-        tr.find("#del-"+f.id).on("click",()=>deleteFlight(f))
+        tr.find("#edit-"+f.id).on("click",()=>showEditFlightModal(f))
+        tr.find("#del-"+f.id).on("click",()=>showDeleteFlightModal(f))
         tbody.append(tr)
     }
 }
 
+
+function showDeleteFlightModal(f){
+    GlobalFlight = f
+    $("#confirmDeleteModalBody").html(
+        "¿ Está seguro de que desea eliminar el siguiente vuelo: "
+        +f.id+" - "+ f.route.id +" - "+ datesOfFlight(f) +" ?"
+    )
+    $("#confirmDeleteModal").modal("show")
+}
+
 function deleteFlight(flight){
-    console.log(flight)
     let msg = {
         "type":"delete",
         "content":JSON.stringify(flight)
     }
     sendMsg(msg)
+    $("#confirmDeleteModal").modal("hide")
+    $("#successModal").modal("show")
 }

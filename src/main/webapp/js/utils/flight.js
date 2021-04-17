@@ -3,12 +3,9 @@ function WSflight(){
 }
 
 function typeOfFlight(f){
-    if(f.departureDate !== undefined){
-        if(f.returnDate === undefined)
-            return 'Ida'
-        return 'Ida y Vuelta'
-    }
-    return 'Vuelta'
+    if(f.returnDate === undefined)
+        return 'Ida'
+    return 'Ida y Vuelta'
 }
 
 function datesOfFlight(f){
@@ -18,8 +15,6 @@ function datesOfFlight(f){
             return f.departureDate
         case 'Ida y Vuelta':
             return f.departureDate + " -> " + f.returnDate
-        case 'Vuelta':
-            return f.returnDate
     }
 }
 
