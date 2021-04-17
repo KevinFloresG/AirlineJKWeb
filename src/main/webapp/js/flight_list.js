@@ -1,10 +1,16 @@
 import {WSflight, typeOfFlight, datesOfFlight} from './utils/flight.js'
 
+let wsflight
+
 $(load)
 
 function load(){
-    const wsflight = WSflight()
+    wsflight = WSflight()
     wsflight.onmessage = function(event){processMsg(event)}
+}
+
+function sendMsg(obj){
+    wsflight.send(JSON.stringify(obj))
 }
 
 function processMsg(evt){
@@ -15,7 +21,7 @@ function processMsg(evt){
         case 'update': 
             flightTr(request.content, 'upd'); break;
         case 'delete': 
-            flghtTr(request.content, 'del'); break;
+            flightTr(request.content, 'del'); break;
     }
 }
 
@@ -25,17 +31,7 @@ function listAllFlights(list){
         flightTr(f, 'new')
     })
 }
-/*
- * 
- * <tr class="tableTitle d-flex">
-    <td scope="col" class="col-2">Id</td>
-    <td scope="col" class="col-2">Tipo</td>
-    <td scope="col" class="col-2">Origen</td>
-    <td scope="col" class="col-2">Destino</td>
-    <td scope="col" class="col-2">Fechas</td>
-    <td scope="col" class="col-2"></td>
-</tr>
- */
+
 function flightTr(f, type){
     if(type === 'del'){
         let index = document.getElementById(`tr-${f.id}`).rowIndex
@@ -48,15 +44,26 @@ function flightTr(f, type){
         "<td scope='col' class='col-2'>"+f.route.destination.name+"</td>"+
         "<td scope='col' class='col-2'>"+datesOfFlight(f)+"</td>"+
         "<td class='col-1'>"+
-            "<i style='cursor: pointer;' class='fas fa-edit fa-l-blue'>"+
+            "<i id='edit-"+f.id+"' style='cursor: pointer;' class='fas fa-edit fa-l-blue'>"+
         "</td>"+
         "<td class='col-1'>"+
-            "<i style='cursor: pointer;' class='fas fa-ban fa-l-red'></i>"+
+            "<i id='del-"+f.id+"' style='cursor: pointer;' class='fas fa-ban fa-l-red'></i>"+
         "</td>";
     if(type === 'new'){
         let tbody = $("#flightsList")
-        let tr = $('<tr class="d-flex" />')
+        let tr = $('<tr id="tr-'+f.id+'" class="d-flex" />')
         tr.html(trContent)
+        //tr.find("#edit-"+f.id).on("click",()=>...)
+        tr.find("#del-"+f.id).on("click",()=>deleteFlight(f))
         tbody.append(tr)
     }
+}
+
+function deleteFlight(flight){
+    console.log(flight)
+    let msg = {
+        "type":"delete",
+        "content":JSON.stringify(flight)
+    }
+    sendMsg(msg)
 }
