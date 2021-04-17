@@ -125,6 +125,7 @@
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
                                 <tbody class="tableBody" id="userReservationList">
+                                    <!--
                                     <tr class="d-flex">
                                         <td class="col-4">321 - ITA-CR</td>									
                                         <td class="col-1">1</td>
@@ -133,7 +134,7 @@
                                         <td class="col-2" >
                                             <i style='cursor: pointer;' class='fas fa-info-circle fa-l-blue' data-toggle="modal" data-target="#reservationModal"></i>
                                         </td>
-                                    </tr>			
+                                    </tr>	-->		
                                 </tbody>
                             </table>
                         </div>
@@ -218,12 +219,9 @@
                         <div class="col-md-4 mb-3">
                             <label for="flightInfo"><b>Vuelo:</b></label>
                             <input type="text" class="form-control" id="flightInfo" readonly>
-							<input type="hidden" id="flightId">
-                        </div>
-						
-
-						
-						<div class="col-md-2 mb-3">
+                            <input type="hidden" id="flightId">
+                        </div>			
+			<div class="col-md-2 mb-3">
                             <label for="airplane"><b>Id del Avión:</b></label>
                             <input type="text" class="form-control" id="airplane" readonly>
                         </div>
@@ -246,7 +244,7 @@
 						
 						<div class="col-md-3 mb-3">
                             <label for="payType"> <b>Tipo de pago:</b> </label>
-                            <input type="number" class="form-control" id="payType" readonly>
+                            <input type="text" class="form-control" id="payType" readonly>
                         </div>
 						
                         <div class="col-md-1 mb-3"></div>
@@ -254,7 +252,7 @@
 						
                     </div>
 
-					<div class="form-row">
+        		<div class="form-row">
 					
                         <div class="col-md-3 mb-3"></div>
 						

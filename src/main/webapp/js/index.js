@@ -1,4 +1,4 @@
-import {loginInit,getLoggedUser} from './utils/login.js';
+import {loginInit} from './utils/login.js';
 
 $(load)
 
