@@ -19,7 +19,8 @@ function getLoggedUser(){
 
         if(access==="0")
             showUserOptions();
-        
+        else
+            showAdminOptions();
     }
 }
 
@@ -72,10 +73,27 @@ async function endLogin(x){
 }
 
 function showUserOptions(){
-    document.getElementById("userOptionsL").hidden = false;
-    document.getElementById("checkInOpt").hidden = false;
-    document.getElementById("signInOpt").hidden = false;
-    document.getElementById("userReservationO").hidden = false;
+    $("#signInOpt").attr("hidden",true);
+    $('#userOptionsL').removeAttr('hidden');
+    $('#checkInOpt').removeAttr('hidden');
+    $('#userReservationO').removeAttr('hidden');
+    
+// show reservation button 
+
+}
+
+function showAdminOptions(){
+    
+    $("#signInOpt").attr("hidden",true);
+    $("#userFlightList").attr("hidden",true);
+    $("#publicRoutesList").attr("hidden",true);
+    $('#userOptionsL').removeAttr('hidden');
+    $('#adminFlightList').removeAttr('hidden');
+    $('#planesList').removeAttr('hidden');
+    $('#routesList').removeAttr('hidden');
+    $('#destinationsList').removeAttr('hidden');
+    $('#reports').removeAttr('hidden');
+
 
 }
 
