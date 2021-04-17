@@ -1,6 +1,6 @@
 <html lang="es" >
 <head>
-	<title>Mis Reservaciones - F & A Airlines</title>
+	<title>Lista de Rutas - F & A Airlines</title>
 	<meta charset="UTF-8">
 	<link href="css/header.css" rel="stylesheet" type="text/css">
 	<link href="css/standardPage.css" rel="stylesheet" type="text/css">
@@ -58,12 +58,6 @@
 					<a href="SchedulesList.html" class="dropdown-item"> Listado de Horarios </a>
 				</div>
 			</li>
-			<li class="nav-item dropdown" id="publicRoutesList">
-				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="pROptions">Rutas<span class="caret"></span></a>
-				<div class="dropdown-menu" aria-labelledby="pROptions">
-					<a href="PRoutesList.html" class="dropdown-item"> Ver Rutas </a>
-				</div>
-			</li>
 			<li class="nav-item dropdown" id="destinationsList">
 				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="placesOptions">Destinos<span class="caret"></span></a>
 				<div class="dropdown-menu" aria-labelledby="placesOptions">
@@ -88,7 +82,7 @@
         <!-- Principal Container -->
         <div class="col-md-10 pt-3 principal-container" style="opacity: 0.95;">
             <div id="AirplaneTypesListDiv">
-                <div class="title container-fluid">Mis Reservaciones</div>
+                <div class="title container-fluid">Listado de Rutas</div>
                 <br>
                 <!-- Begin of Table -->
                 <div class="tableContainer">
@@ -98,25 +92,25 @@
                                 <thead>
                                 <!-- Column Titles -->
                                 <tr class="tableTitle d-flex">
-                                    <th scope="col" class="col-4">Vuelo</th>
-                                    <th scope="col" class="col-1">Asientos</th>
-                                    <th scope="col" class="col-3">Costo</th>
-                                    <th scope="col" class="col-2">CheckIn</th>
-                                    <th scope="col" class="col-2"></th>
+                                    <th scope="col" class="col-2">Id</th>
+									<th scope="col" class="col-2">C. Origen</th>
+                                    <th scope="col" class="col-2">C. Destino</th>
+									<th scope="col" class="col-2">Horario</th>
+                                    <th scope="col" class="col-4"></th>
                                 </tr>
                                 <!-- Inputs for Searching -->
                                 <tr class="d-flex">
-                                    <th scope="col" class="col-4">
-                                        <input class="form-control" type="text" id="reservationFlightInfo">
-                                    </th>
-                                    <th scope="col" class="col-1"></th>
-                                    <th scope="col" class="col-3"></th>
-                                    <th scope="col" class="col-2"></th>	
                                     <th scope="col" class="col-2">
-                                        <button class="btn btn-primary" id="searchUReservations">
-                                            <i class="fas fa-search"> Buscar</i>
-                                        </button>
                                     </th>
+									<th scope="col" class="col-2">
+                                        <input class="form-control" type="text" id="routeOrigin">
+                                    </th>
+									<th scope="col" class="col-2">
+                                        <input class="form-control" type="text" id="routeDestination">
+                                    </th>
+									<th scope="col" class="col-2"></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" id="searchRoutes"><i class="fas fa-search"> Buscar</i></button></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addRouteModal"><i class="fas fa-plus"> Agregar</i></button></th>
                                 </tr>
                                 </thead>
                             </table>
@@ -124,16 +118,18 @@
                         <!-- Table Content -->
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
-                                <tbody class="tableBody" id="userReservationList">
-                                    <tr class="d-flex">
-                                        <td class="col-4">321 - ITA-CR</td>									
-                                        <td class="col-1">1</td>
-                                        <td class="col-3">3000 - DOL</td>
-                                        <td class="col-2">Pendiente</td>
-                                        <td class="col-2" >
-                                            <i style='cursor: pointer;' class='fas fa-info-circle fa-l-blue' data-toggle="modal" data-target="#reservationModal"></i>
-                                        </td>
-                                    </tr>			
+                                <tbody class="tableBody" id="routesList">
+								<tr class="d-flex">
+									<td class="col-2">ITA-CR 1</td>
+									<td class="col-2">Roma, Italia</td>									
+									<td class="col-2">SJO, Costa Rica</td>
+									<td class="col-2">Lunes - 10:00</td>
+									<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
+									<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
+                                </tr>
+                                
+                            </table>
+								
                                 </tbody>
                             </table>
                         </div>
@@ -190,8 +186,8 @@
     </div>
 </footer>
 
-<!-- Reservation Modal -->
-<div id="reservationModal" class="modal fade" >
+<!-- Add AirplaneType Modal -->
+<div id="addRouteModal" class="modal fade" >
     <div class="modal-dialog modal-dialog-centered modal-confirm modal-lg">
         <div class="modal-content" style="background-color: #CCCCCC;">
             <!-- Modal Header -->
@@ -199,115 +195,109 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <!-- Modal body -->
-            <div class="modal-body" id="addAirplaneTypeBody">
+            <div class="modal-body" id="addRouteBody">
                 
-                <div class="title container-fluid">Detalle de la reserva</div>
+                <div class="title container-fluid">Agregar una Ruta</div>
                 <br> <br>
-				<form id="reservationForm" class="needs-validation" novalidate>
+				<form id="routeForm" class="needs-validation" novalidate>
                     <div class="form-row">
 					
                         <div class="col-md-1 mb-3"></div>
 						
                         <div class="col-md-3 mb-3">
                             <label for="id"> <b>Id:</b> </label>
-                            <input type="text" class="form-control" id="id" readonly>
+                            <input type="text" class="form-control" id="id" placeholder="Id" required>
+                            <div class="invalid-feedback">
+                                Debe indicar el id de la ruta.
+                            </div>
                         </div>
 						
 
 						
-                        <div class="col-md-4 mb-3">
-                            <label for="flightInfo"><b>Vuelo:</b></label>
-                            <input type="text" class="form-control" id="flightInfo" readonly>
-							<input type="hidden" id="flightId">
+                        <div class="col-md-3 mb-3">
+                            <label for="origin"><b>Origen:</b></label>
+                            <select name="origin" id="origin" class="form-control" required>
+							  <option value="SJ">San José, Costa Rica</option>
+							  <option value="TOR">Toronto, Canada</option>
+							</select>
+                            <div class="invalid-feedback">
+                                Debe indicar el origen de la ruta.
+                            </div>
                         </div>
 						
 
+						
+						<div class="col-md-3 mb-3">
+                            <label for="destination"><b>Destino:</b></label>
+                            <select name="destination" id="destination" class="form-control" required>
+							  <option value="SJ">San José, Costa Rica</option>
+							  <option value="TOR">Toronto, Canada</option>
+							</select> 
+                            <div class="invalid-feedback">
+                                Debe indicar el destino de la ruta.
+                            </div>
+                        </div>
+						
+                    </div>
+					<div class="form-row">
+					
+						<div class="col-md-1 mb-3"></div>
+						
+					    <div class="col-md-3 mb-3">
+                            <label for="plane"> <b>Avión:</b> </label>
+                            <select name="plane" id="plane" class="form-control" required>
+							  <option value="Z8C91">1B-B777 - 50 asientos</option>
+							  <option value="W8R62">13-B747 - 80 asientos</option>
+							</select>
+                            <div class="invalid-feedback">
+                                Debe indicar el avión asignado a la ruta.
+                            </div>
+                        </div>
+						
+						
+						
+						<div class="col-md-3 mb-3">
+                            <label for="schedules"> <b>Horario:</b> </label>
+                            <select name="schedules" id="schedules" class="form-control" required>
+							  <option value="1">Lunes - 10:00</option>
+							  <option value="2">Martes - 06:00</option>
+							</select>
+                            <div class="invalid-feedback">
+                                Debe indicar el horario de la ruta.
+                            </div>
+                        </div>
+						
+                        <div class="col-md-2 mb-3">
+                            <label for="duration"> <b>Duración (h):</b> </label>
+                            <input type="number" class="form-control" id="hours" value="1" min="1" max="24" step="1" required>
+                            <div class="invalid-feedback">
+                                Debe indicar la duración en horas de la ruta.
+                            </div>
+                        </div>
 						
 						<div class="col-md-2 mb-3">
-                            <label for="airplane"><b>Id del Avión:</b></label>
-                            <input type="text" class="form-control" id="airplane" readonly>
-                        </div>
-						
-                    </div>
-					<div class="form-row">
-					
-                        <div class="col-md-1 mb-3"></div>
-						
-                        <div class="col-md-3 mb-3">
-                            <label for="seats"> <b>Asientos:</b> </label>
-                            <input type="number" class="form-control" id="seats" readonly>
+                            <label for="duration"> <b>Duración (m):</b> </label>
+							<input type="number" class="form-control" id="minutes" value="30" min="0" max="60" step="1" required>
+                            <div class="invalid-feedback">
+                                Debe indicar la duración en minutos de la ruta.
+                            </div>
                         </div>
 						
 						
-                        <div class="col-md-3 mb-3">
-                            <label for="price"> <b>Costo:</b> </label>
-                            <input type="number" class="form-control" id="price" readonly>
-                        </div>
-						
-						<div class="col-md-3 mb-3">
-                            <label for="payType"> <b>Tipo de pago:</b> </label>
-                            <input type="number" class="form-control" id="payType" readonly>
-                        </div>
-						
-                        <div class="col-md-1 mb-3"></div>
-						
-						
-                    </div>
 
-					<div class="form-row">
-					
-                        <div class="col-md-3 mb-3"></div>
-						
-                        <div class="col-md-3 mb-3">
-                            <label for="state"> <b>Estado:</b> </label>
-                            <input type="text" class="form-control" id="state" readonly>
-                        </div>
-						
-						
-						<div class="col-md-3 mb-3">
-                            <label for="checkedInQ"> <b>Tiquetes pendientes:</b> </label>
-                            <input type="number" class="form-control" id="checkedInQ" readonly>
-                        </div>
 						
                         <div class="col-md-1 mb-3"></div>
 						
 						
-                    </div>							
-                   <br>
-				   <label for="rTicketsListD"> <b>Tiquetes:</b> </label>
-				   <div class="tableContainer" id="rTicketsListD">
-                    <div class="tableScrollX">
-                        <div class="tableHeaderPadding">
-                            <table class="table tableHeader">
-                                <thead>
-                                <!-- Column Titles -->
-                                <tr class="tableTitle d-flex">
-                                    <th scope="col" class="col-4">Id</th>
-                                    <th scope="col" class="col-4">Fila</th>
-                                    <th scope="col" class="col-4">Columna</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- Table Content -->
-                        <div class="tableContent" style="max-height: 200px;">
-                            <table class="table table-hover table-striped table-bordered">
-                                <tbody class="tableBody" id="rTicketsList">
-								<tr class="d-flex">
-                                    <td scope="col" class="col-4">1231</td>
-                                    <td scope="col" class="col-4">24</td>
-                                    <td scope="col" class="col-4">5</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-				   
+                    </div>					
+                   
                 </form>
+
             </div>
+            <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				<button type="button" id="addRouteB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
             </div>
         </div>
     </div>
@@ -339,20 +329,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div id="confirmDeleteModalBody" class="modal-body">
-				¿ Está seguro de que desea cancelar la siguiente reserva: XXXXXXX ?
+				¿ Está seguro de que desea eliminar la siguiente ruta: ID - Origen - Destino - Horario?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                <button id="deleteReservation" type="button" class="btn btn-danger">Confirmar</button>
+                <button id="deleteRoute" type="button" class="btn btn-danger">Confirmar</button>
             </div>
         </div>
     </div>
 </div>
-<!-- End of Delete Modal -->
+
 
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="js/user_reservations.js" type="module"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
