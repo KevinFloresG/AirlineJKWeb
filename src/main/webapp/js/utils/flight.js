@@ -17,7 +17,7 @@ function datesOfFlight(f){
         case 'Ida':
             return f.departureDate
         case 'Ida y Vuelta':
-            return f.departureDate + "-" + f.returnDate
+            return f.departureDate + " -> " + f.returnDate
         case 'Vuelta':
             return f.returnDate
     }
