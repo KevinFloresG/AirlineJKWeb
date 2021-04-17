@@ -15,10 +15,11 @@ function getLoggedUser(){
         loginBtn.text("")
         loginBtn.hide()
         
-        let access = sessionStorage.getItem('userAccess')
+        var access = sessionStorage.getItem('useraccess')
+
+        if(access==="0")
+            showUserOptions();
         
-        if(access===0)
-            showUserOptions()
     }
 }
 
@@ -71,9 +72,11 @@ async function endLogin(x){
 }
 
 function showUserOptions(){
-    $("#userOptionsL").show()
-    $("#checkInOpt").show()
-    $("#signInOpt").show()
+    document.getElementById("userOptionsL").hidden = false;
+    document.getElementById("checkInOpt").hidden = false;
+    document.getElementById("signInOpt").hidden = false;
+    document.getElementById("userReservationO").hidden = false;
+
 }
 
 export {loginInit};

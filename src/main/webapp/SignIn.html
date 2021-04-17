@@ -71,15 +71,19 @@
 			<li class="nav-item" id="signInOpt">
 				<a href="SignIn.html" class="nav-link color-me">Registrarse</a>
 			</li>
-			<li class="nav-item" id="reports" hidden>
-				<a href="Reports.html" class="nav-link color-me">Reportes</a>
+			<li class="nav-item dropdown" id="reports" hidden>
+				<a href="#" class="nav-link dropdown-toggle color-me" data-toggle="dropdown" data-target="reportOptions">Reportes<span class="caret"></span></a>
+				<div class="dropdown-menu" aria-labelledby="reportOptions">
+					<a href="FlightClientsList.html" class="dropdown-item"> Listado de Clientes por Vuelo </a>
+					<a href="top5RoutesList.html" class="dropdown-item"> Top 5 Rutas con más ventas </a>
+				</div>
 			</li>
 		</ul>
 	</div>
 
 	<button type="button" class="btn text-white btn-link" style="float: right" id="iniciarS" data-toggle="modal" data-target="#loginModal">Log In</button>
 	<button type="button" class="btn text-white btn-link" style="float: right" id="currentUser"></button>
-	<button type="button" class="btn text-white btn-link" style="float: right" id="logOut" hidden></button>
+>
 </nav>
 <!-- Content -->
 <div class="content-fluid" style="background-image: url('images/airport4k.jpg'); height: 100%; witdth: 100%;">
@@ -94,9 +98,9 @@
                 <form id="userForm" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
-                            <label for="username"> <b>Username</b></label>
+                            <label for="fUserName"> <b>Username</b></label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="username" maxlength="20" placeholder="Nombre de Usuario" required>
+                                <input type="text" class="form-control" id="fUserName" maxlength="20" placeholder="Nombre de Usuario" required>
                                 <button title="Validar si el nombre de usuario esta disponible." id="checkUsername" type="button" class="btn btn-primary"> <i class="fas fa-search"></i></button>
                                 <div class="invalid-feedback">
                                     Debe indicar un nombre de usuario.
@@ -291,6 +295,6 @@
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
+<script type="module" src="js/index.js"></script>
 </body>
 </html>
