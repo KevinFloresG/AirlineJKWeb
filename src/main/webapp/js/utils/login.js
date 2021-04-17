@@ -65,4 +65,4 @@ async function endLogin(x){
     }
 }
 
-export {loginInit, getLoggedUser};
+export {loginInit};
