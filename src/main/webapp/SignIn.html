@@ -92,7 +92,7 @@
         <div class="col-md-1"></div>
         <!-- Principal Container -->
         <div class="col-md-10 pt-3 principal-container" style="opacity: 0.95;">
-            <div id="officerFormDiv">
+            <div id="userFormDiv">
                 <div class="title container-fluid">Sign In</div>
                 <br>
                 <form id="userForm" class="needs-validation" novalidate>
@@ -101,7 +101,6 @@
                             <label for="fUserName"> <b>Username</b></label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="fUserName" maxlength="20" placeholder="Nombre de Usuario" required>
-                                <button title="Validar si el nombre de usuario esta disponible." id="checkUsername" type="button" class="btn btn-primary"> <i class="fas fa-search"></i></button>
                                 <div class="invalid-feedback">
                                     Debe indicar un nombre de usuario.
                                 </div>
@@ -158,12 +157,25 @@
                         </div>
                     
                     <div class="form-row">
-						<div class="col-md-4 mb-3"> </div>
                         <div class="col-md-4 mb-3">
                             <label for="address"><b>Dirección</b></label>
-                            <textarea id="address" class="form-control" style="resize: none;" rows="3" cols="50" placeholder="Dirección" required></textarea>
+                            <textarea id="address" class="form-control" style="resize: none;" rows="2" cols="50" placeholder="Dirección" required></textarea>
                             <div class="invalid-feedback">
                                 Se debe registrar una dirección.
+                            </div>
+						</div>	
+						<div class="col-md-3 mb-3">
+                            <label for="fPassword"><b>Clave</b></label>
+                            <input type="text" maxlength="15" class="form-control" id="fPassword" placeholder="**********">
+                            <div class="invalid-feedback">
+                                Se debe registrar una clave.
+                            </div>
+                        </div>
+						<div class="col-md-3 mb-3">
+                            <label for="fPassword2"><b>Confirme su clave</b></label>
+                            <input type="text" maxlength="15" class="form-control" id="fPassword2" placeholder="**********">
+                            <div class="invalid-feedback">
+                                Se debe registrar una clave.
                             </div>
                         </div>
                     </div>
