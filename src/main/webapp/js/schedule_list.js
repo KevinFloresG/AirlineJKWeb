@@ -116,7 +116,8 @@ function deleteSchedule(schedule){
 function updateSchedule(schedule){
     let f = {
         id:schedule.id,
-        name: $("#name").val()
+        weekday:schedule.weekday,
+        departureTime: $("#hour").val()
     };
     let msg = {
         type:"update",
