@@ -128,7 +128,7 @@
                                         </button>
                                     </th>
                                     <th scope="col" class="col-1">
-					<button class="btn btn-primary" data-toggle="modal" data-target="#addFlightModal">
+					<button class="btn btn-primary" id="addNewFlightBtn">
                                             <i class="fas fa-plus"> Agregar</i>
                                         </button>
                                     </th>
@@ -207,66 +207,49 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body" id="addFlightBody">
-                
-                <div class="title container-fluid">Agregar un vuelo</div>
+                <div id="flightModalTittle" class="title container-fluid"></div>
                 <br> <br>
-				<form id="FlightForm" class="needs-validation" novalidate>
-                    <div class="form-row">
-					
-                        <div class="col-md-1 mb-3"></div>
-						
-                        <div class="col-md-4 mb-3">
+		<form id="FlightForm" class="needs-validation" novalidate>
+                    <div class="form-row">		
+                        <div class="col-md-5 mb-3">
                             <label for="route"> <b>Ruta:</b> </label>
-                            <select name="route" id="destination" class="form-control" required>
-							  <option value="CR-USA">San Jose, CR - Nueva York, USA </option>
-							</select> 
-                        </div>
-						
+                            <select name="route" id="flightRoute" class="form-control" required>
+                                <option value="" disabled selected>No Seleccionada</option>
+                                <option value="CR-USA">San Jose, CR - Nueva York, USA </option>
+                                <option value="CR-CHI">San Jose, CR  </option>
+                            </select> 
+                        </div>		
                         <div class="col-md-3 mb-3">
                             <label for="departureDate"><b>Fecha de Ida:</b></label>
                             <input type="date" class="form-control" id="departureDate" required>
                         </div>			
-						<div class="col-md-4 mb-3">
-                            <label for="returnDate"><b>Fecha de Regreso (Opc.):</b></label>
-                            <input type="date" class="form-control" id="returnDate">
-                        </div>
-						
+			<div class="col-md-4 mb-3">
+                            <label for="returnDatee"><b>Fecha de Regreso (Opc.):</b></label>
+                            <input type="date" class="form-control" id="returnDatee">
+                        </div>			
                     </div>
-					<div class="form-row">
-					
+                    <div class="form-row">			
                         <div class="col-md-1 mb-3"></div>
-						
-						<!-- La idea seria que si no es muy ineficiente o complejo que este campo se llene cuando se seleccione una ruta arriba (onChange), ya que
-							se podria sacar de ella el avion asociado y la cantidad total de asientos de este. Si es mucha vara que el usuario lo llene -->
                         <div class="col-md-3 mb-3">
                             <label for="aSeats"> <b>Asientos D:</b> </label>
-                            <input type="number" class="form-control" id="aSeats" required>
-                        </div>
-						
-						
+                            <input type="number" readonly class="form-control" value="0" id="aSeats" required>
+                        </div>		
                         <div class="col-md-3 mb-3">
                             <label for="tPrice"> <b>Costo por T:</b> </label>
-                            <input type="number" class="form-control" id="tPrice" step="1" required>
+                            <input type="number" class="form-control" id="tPrice" value="0" step="1" required>
                         </div>
-						
-						<div class="col-md-3 mb-3">
+			<div class="col-md-3 mb-3">
                             <label for="discount"> <b>Descuento (%):</b> </label>
                             <input type="number" class="form-control" id="discount" value="0" min="0" max="80" step="1" required>
-                        </div>
-						
-                        <div class="col-md-1 mb-3"></div>
-						
-						
-                    </div>
-
-						
-				   
+                        </div>			
+                        <div class="col-md-1 mb-3"></div>			
+                    </div>				   
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addFlightB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
-				<button type="button" id="updateFlightB" class="btn btn-primary" data-dismiss="modal" hidden>Actualizar</button>
+		<button type="button" id="addFlightB" class="btn btn-primary" >Agregar</button>
+		<button type="button" id="updateFlightB" class="btn btn-primary" hidden>Actualizar</button>
             </div>
         </div>
     </div>
