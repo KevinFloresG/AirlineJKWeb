@@ -40,14 +40,14 @@ async function addUser(){
         body:JSON.stringify(user)
     };
 
-    const response = await fetch("/AirlineJK/users/add", requestBody);
+    let response = await fetch("/AirlineJK/users/add", requestBody);
     
     
+    console.log(response.ok)
     if(response.ok)
-        $("#successModal").show();
+        $("#successModal").modal("show");
     else{
-        console.log(response.status);
-        console.log(response.statusText);
+        window.alert("Ha ocurrido un error, por favor intente de nuevo o cambie su username.");
     }
 }
 
