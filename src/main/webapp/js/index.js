@@ -1,9 +1,8 @@
 import {loginInit} from './utils/login.js';
 
-$(load)
+$(load);
 
 function load(){
-    loginInit()
+    loginInit();
 }
-
 
