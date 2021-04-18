@@ -131,14 +131,14 @@ function updateCountry(country){
 }
 
 function addCountry(){
-    let flight = {
+    let country = {
         id:$("#code").val(),
         name: $("#name").val()
     };
 
     let msg = {
         type:"add",
-        content:JSON.stringify(flight)
+        content:JSON.stringify(country)
     };
     sendMsg(msg);
     $("#addCountryModal").modal("hide");

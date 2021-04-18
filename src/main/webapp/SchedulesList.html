@@ -98,7 +98,7 @@
         <div class="col-md-1"></div>
         <!-- Principal Container -->
         <div class="col-md-10 pt-3 principal-container" style="opacity: 0.95;">
-            <div id="CountriesListDiv">
+            <div id="SchedulesListDiv">
                 <div class="title container-fluid">Listado de Horarios</div>
                 <br>
                 <!-- Begin of Table -->
@@ -117,19 +117,19 @@
                                 <tr class="d-flex">
                                     <th scope="col" class="col-5">
                                         <select name="days" id="days" class="form-control" required>
-										  <option value="Lunes">Lunes</option>
-										  <option value="Martes">Martes</option>
-										  <option value="Miercoles">Miércoles</option>
-										  <option value="Jueves">Jueves</option>
-										  <option value="Viernes">Viernes</option>
-										  <option value="Sabado">Sábado</option>
-										  <option value="Domingo">Domingo</option>
-										  <option value="All">Cualquiera</option>
-										</select>
+                                            <option value="">Cualquiera</option>
+                                            <option value="Lunes">Lunes</option>
+                                            <option value="Martes">Martes</option>
+                                            <option value="Miercoles">Miércoles</option>
+                                            <option value="Jueves">Jueves</option>
+                                            <option value="Viernes">Viernes</option>
+                                            <option value="Sabado">Sábado</option>
+                                            <option value="Domingo">Domingo</option>
+					</select>
                                     </th>
-									<th scope="col" class="col-3"></th>
+				<th scope="col" class="col-3"></th>
                                     <th scope="col" class="col-2"><button class="btn btn-primary" id="searchSchedules"><i class="fas fa-search"> Buscar</i></button></th>
-                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addScheduleModal"><i class="fas fa-plus"> Agregar</i></button></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" id="addNewScheduleBtn"><i class="fas fa-plus"> Agregar</i></button></th>
                                 </tr>
                                 </thead>
                             </table>
@@ -137,18 +137,15 @@
                         <!-- Table Content -->
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
-                                <tbody class="tableBody" id="countriesList">
-								<tr class="d-flex">
-									<td class="col-5">Lunes</td>
-									<td class="col-3">10:00</td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
-                                </tr>
-                                
-                            </table>
-								
+                                <tbody class="tableBody" id="schedulesList">                                  
+				    <tr class="d-flex">
+					<td class="col-5">Lunes</td>
+					<td class="col-3">10:00</td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
+                                    </tr>
                                 </tbody>
-                            </table>
+                            </table>						
                         </div>
                     </div>
                 </div>
@@ -216,7 +213,7 @@
                 
                 <div class="title container-fluid">Agregar un Horario</div>
                 <br> <br>
-				<form id="countryForm" class="needs-validation" novalidate>
+		<form id="scheduleForm" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
 
@@ -224,6 +221,7 @@
                         <div class="col-md-3 mb-3">
                             <label for="sDays"> <b>Día:</b> </label>
 							<select name="sDays" id="sDays" class="form-control" required>
+                                                          <option value="">Elija un dia</option>
 							  <option value="Lunes">Lunes</option>
 							  <option value="Martes">Martes</option>
 							  <option value="Miercoles">Miércoles</option>
@@ -237,8 +235,7 @@
                             </div>
                         </div>
 						
-						<div class="col-md-1 mb-3">
-
+			<div class="col-md-1 mb-3">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="hour"><b>Hora:</b></label>
@@ -261,7 +258,8 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addScheduleB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+		<button type="button" id="addScheduleB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+                <button type="button" id="updateScheduleB" class="btn btn-primary" hidden>Actualizar</button>
             </div>
         </div>
     </div>
