@@ -111,42 +111,36 @@
                                     <th scope="col" class="col-2">Tipo</th>
                                     <th scope="col" class="col-2">Origen</th>
                                     <th scope="col" class="col-2">Destino</th>
-									<th scope="col" class="col-3">Ida</th>
-									<th scope="col" class="col-1">Asientos D.</th>
+                                    <th scope="col" class="col-3">Ida</th>
+                                    <th scope="col" class="col-1">Asientos D.</th>
                                     <th scope="col" class="col-2"></th>
                                 </tr>
                                 <!-- Inputs for Searching -->
                                 <tr class="d-flex">
-
                                     <th scope="col" class="col-2">
-									    <select name="sFType" id="sFType" class="form-control" readonly>
-										  <option value="NReturn">Ida</option>
-										  <option value="Return">Ida y Vuelta</option>
-										  <option value="All">Todos</option>
-										</select> 
-										</select> 
-									</th>
+                                        <select name="sFType" id="sFType" class="form-control">
+                                          <option value="NReturn">Ida</option>
+                                          <option value="Return">Ida y Vuelta</option>
+                                          <option value="All">Todos</option>
+                                        </select> 
+                                    </th>
                                     <th scope="col" class="col-2">
-										<input class="form-control" type="text" id="sRouteOrigin">
-									</th>
-										
+					<input class="form-control" type="text" id="sRouteOrigin">
+                                    </th>						
                                     <th scope="col" class="col-2">
-										<input class="form-control" type="text" id="sRouteDestination">
-									</th>	
-									<th scope="col" class="col-3">
-										<input class="form-control" type="date" id="sDptDate">
-									</th>
-									
-									<th scope="col" class="col-1">
-										<input class="form-control" type="number" min="1" max="366" value="1"  id="sSeats">
-									</th>
-									
+					<input class="form-control" type="text" id="sRouteDestination">
+                                    </th>	
+                                    <th scope="col" class="col-3">
+					<input class="form-control" type="date" id="sDptDate">
+                                    </th>
+                                    <th scope="col" class="col-1">
+					<input class="form-control" type="number" min="1" max="366" value="1"  id="sSeats">
+                                    </th>					
                                     <th scope="col" class="col-2">
                                         <button class="btn btn-primary" id="searchUFlights">
                                             <i class="fas fa-search"> Buscar</i>
                                         </button>
                                     </th>
-
                                 </tr>
                                 </thead>
                             </table>
@@ -155,14 +149,6 @@
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
                                 <tbody class="tableBody" id="flightsList">
-									<tr class="d-flex">
-										<td class="col-2">Ida</td>
-										<td class="col-2">Roma, Italia</td>									
-										<td class="col-2">SJO, Costa Rica</td>
-										<td class="col-3">20/10/2021</td>
-										<td class="col-1">72</td>
-										<td class="col-2"><i style='cursor: pointer;' class='fas fa-info-circle fa-l-blue' data-toggle="modal" data-target="#flightInfoModal"></td>
-									</tr>
                                 </tbody>
                             </table>
                         </div>
@@ -229,68 +215,48 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body" id="addFlightBody">
-                
                 <div class="title container-fluid">Detalles del vuelo</div>
                 <br> <br>
-				<form id="FlightForm" class="needs-validation" novalidate>
-                    <div class="form-row">
-					
+		<form id="FlightForm" class="needs-validation" novalidate>
+                    <div class="form-row">		
                         <div class="col-md-2 mb-3">
-							<label for="flightID"> <b>Id:</b> </label>
-							<input class="form-control" type="number" id="flightID" value="1" readonly>
-						</div>
-						
+                            <label for="flightID"> <b>Id:</b> </label>
+                            <input class="form-control" type="number" id="flightID" value="1" readonly>
+			</div>			
                         <div class="col-md-3 mb-3">
                             <label for="route"> <b>Ruta:</b> </label>
-							<input class="form-control" type="text" id="route" value="ITA-CR" readonly>
-                        </div>
-						
+                            <input class="form-control" type="text" id="route" value="ITA-CR" readonly>
+                        </div>			
                         <div class="col-md-3 mb-3">
                             <label for="departureDate"><b>Fecha de Ida:</b></label>
-                            <input type="date" class="form-control" id="departureDate" readonly>
+                            <input type="text" class="form-control" id="departureDate" readonly>
                         </div>			
-						<div class="col-md-3 mb-3">
+			<div class="col-md-3 mb-3">
                             <label for="returnDate"><b>Fecha de Regreso:</b></label>
                             <input type="text" class="form-control" id="returnDate" value="No Aplica" readonly>
-                        </div>
-						
+                        </div>			
                     </div>
-					<div class="form-row">
-					
-                
-						
-						<!-- La idea seria que si no es muy ineficiente o complejo que este campo se llene cuando se seleccione una ruta arriba (onChange), ya que
-							se podria sacar de ella el avion asociado y la cantidad total de asientos de este. Si es mucha vara que el usuario lo llene -->
+                    <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="aSeats"> <b>Asientos D:</b> </label>
                             <input type="number" class="form-control" id="aSeats" readonly>
-                        </div>
-						
-						
+                        </div>	
                         <div class="col-md-4 mb-3">
                             <label for="tPrice"> <b>Costo por T. Colones:</b> </label>
                             <input type="number" class="form-control" id="tPrice"  readonly>
                         </div>
-						
-						<div class="col-md-3 mb-3">
+			<div class="col-md-3 mb-3">
                             <label for="discount"> <b>Descuento (%):</b> </label>
                             <input type="number" class="form-control" id="discount" readonly>
-                        </div>
-						
-                        <div class="col-md-1 mb-3"></div>
-						
-						
+                        </div>			
+                        <div class="col-md-1 mb-3"></div>		
                     </div>
-
-					<center>
-						<button class="btn btn-lg btn-primary mt-3" type="button" id="reservationMB" data-toggle="modal" data-target="#mReservationModal">Reservar Tiquetes</button>
-                    </center>
-				   
+                    <center>
+			<button class="btn btn-lg btn-primary mt-3" type="button" id="reservationMB">
+                            Reservar Tiquetes
+                        </button>
+                    </center>	   
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
             </div>
         </div>
     </div>
@@ -306,70 +272,48 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body" id="mReservationBody">
-                
                 <div class="title container-fluid">Detalle de la reserva</div>
-                <br> <br>
-				<form id="reservationForm" class="needs-validation" novalidate>
-                    <div class="form-row">
-					
-                        <div class="col-md-1 mb-3"></div>
-						
-                        <div class="col-md-4 mb-3">
+                <br><br>
+		<form id="reservationForm" class="needs-validation" novalidate>
+                    <div class="form-row">			
+                        <div class="col-md-6 mb-3">
                             <label for="flightInfo"><b>Vuelo:</b></label>
-                            <input type="text" class="form-control" id="flightInfo" value="Roma, Italia - San Jose, Costa Rica 10/10/2021" readonly>
-                            
+                            <input type="text" class="form-control" id="flightInfo" readonly> 
                         </div>			
-						<div class="col-md-2 mb-3">
+			<div class="col-md-2 mb-3">
                             <label for="airplaneId"><b>Id del Avión:</b></label>
-                            <input type="text" class="form-control" id="airplaneId" value="B771A" readonly>
-                        </div>
-						
-						<div class="col-md-4 mb-3">
+                            <input type="text" class="form-control" id="airplaneId" readonly>
+                        </div>			
+			<div class="col-md-4 mb-3">
                             <label for="userID"><b>Usuario:</b></label>
-                            <input type="text" class="form-control" id="userID" value="El Javo" readonly>
-                        </div>
-						
+                            <input type="text" class="form-control" id="userID" readonly>
+                        </div>				
                     </div>
-					<div class="form-row">
-					
+                    <div class="form-row">
                         <div class="col-md-1 mb-3"></div>
-						
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="seats"> <b>Asientos a reservar:</b> </label>
-							<!-- Aqui max es mejor manejarlo desde js pues va a varias segun la cantidad de asientos disponibles del vuelo -->
-                            <input type="number" class="form-control" id="seats" min="1" max="100" required>
+                            <input type="number" class="form-control" id="seats" min="1" max="100" value="1" required>
                         </div>
-						
-						
                         <div class="col-md-3 mb-3">
                             <label for="price"> <b>Costo:</b> </label>
-							<!-- Manejarlo con on change de el valor de asientos.  -->
                             <input type="number" class="form-control" id="price" readonly>
                         </div>
-						
-						<div class="col-md-3 mb-3">
+			<div class="col-md-3 mb-3">
                             <label for="payTypes"> <b>Tipo de pago:</b> </label>
                             <select name="payTypes" id="payTypes" class="form-control" required>
-								<option value="DOL">Dolares</option>
-								<option value="BT">Bitcoin</option>
-								<option value="CRC">Colones</option>
-							</select> 
-                        </div>
-						
-                        <div class="col-md-1 mb-3"></div>
-						
-						
-                    </div>
-
-					
-                   <br>
-
-				   
+                                <option value="DOL" selected>Dolares</option>
+                                <option value="BTC">Bitcoin</option>
+                                <option value="CRC">Colones</option>
+                            </select> 
+                        </div>			
+                        <div class="col-md-1 mb-3"></div>		
+                    </div><br>	   
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="makeReservation" class="btn btn-primary" data-dismiss="modal">Finalizar compra</button>
+		<button type="button" id="makeReservation" class="btn btn-primary" data-dismiss="modal">Finalizar compra</button>
             </div>
         </div>
     </div>
@@ -389,12 +333,14 @@
 </center>
 <!-- End of Success Modal -->
 
-
-
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<<<<<<< Updated upstream
 <script type="module" src="js/index.js"></script>
 
+=======
+<script src="js/flight_search.js" type="module"></script>
+>>>>>>> Stashed changes
 </body>
 </html>

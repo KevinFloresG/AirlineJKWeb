@@ -62,7 +62,7 @@ function flightTr(f, type){
         "<td scope='col' class='col-2'>"+typeOfFlight(f)+"</td>"+
         "<td scope='col' class='col-2'>"+f.route.origin.name+"</td>"+
         "<td scope='col' class='col-2'>"+f.route.destination.name+"</td>"+
-        "<td scope='col' class='col-2'>"+datesOfFlight(f, toDate)+"</td>"+
+        "<td scope='col' class='col-2'>"+datesOfFlight(f)+"</td>"+
         "<td class='col-1'>"+
             "<i id='edit-"+f.id+"' style='cursor: pointer;' class='fas fa-edit fa-l-blue'>"+
         "</td>"+
@@ -138,7 +138,7 @@ function updateFlight(flight){
         "id":flight.id,
         "availableSeats": flight.availableSeats,
         "price": $("#tPrice").val(),
-        "discount": $("#discount").val(),
+        "discount": $("#discount").val()/100,
         "departureDate": new Date($('#departureDate').val()),
         "returnDate": $("#returnDatee").val() !== ""? new Date($("#returnDatee").val()) : null,
         "route" : flight.route
@@ -156,7 +156,7 @@ function addFlight(){
     let flight = {
         "availableSeats":$("#aSeats").val(),
         "price": $("#tPrice").val(),
-        "discount": $("#discount").val(),
+        "discount": $("#discount").val()/100,
         "departureDate": new Date($('#departureDate').val()),
         "returnDate": $("#returnDatee").val() !== ""? new Date($("#returnDatee").val()) : null,
         "route" :{ "id": $("#flightRoute").val() }

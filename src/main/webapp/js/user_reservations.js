@@ -38,7 +38,7 @@ async function showReservationModal(r_id){
     let r = await getReservation(r_id)
     $("#id").val(r.id)
     $("#flightInfo").val(r.flightInfo)
-    $("#airplane").val(r.airplane.id)
+    $("#airplane").val(r.airplane)
     $("#seats").val(r.seatQuantity)
     $("#price").val(r.totalPrice)
     $("#payType").val(r.typeOfPayment.description)
