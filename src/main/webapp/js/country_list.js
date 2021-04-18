@@ -8,23 +8,11 @@ function load(){
     wscountry = WScountry();
     wscountry.onmessage = function(event){processMsgCountry(event);};
     $("#deleteCountry").on("click", ()=>deleteCountry(GlobalCountry));
-    $("#addNewCountryBtn").on("click", e=>verifyInputs(e,showCountryInfoModal(null)));
+    $("#addNewCountryBtn").on("click", ()=>showCountryInfoModal(null));
     $("#addCountryB").on("click", ()=>addCountry());
     $("#updateCountryB").on("click", ()=>updateCountry(GlobalCountry));
 }
 
-function verifyInputs(event, funct){
-    let form = document.getElementById('countryForm');
-    $("#login-error").hide();
-    if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-    }else{
-        funct();
-        event.preventDefault();
-    }
-    form.classList.add('was-validated');
-}
 
 function sendMsg(obj){
     wscountry.send(JSON.stringify(obj));
@@ -106,7 +94,7 @@ function showCountryInfoModal(f){
     $("#addCountryModal").modal("show");
 }
 
-function showDeleteCountrytModal(f){
+function showDeleteCountryModal(f){
     GlobalCountry = f;
     $("#confirmDeleteModalBody").html(
         "¿ Está seguro de que desea eliminar el siguiente país: "
@@ -128,12 +116,15 @@ function deleteCountry(country){
 function updateCountry(country){
     let f = {
         id:country.id,
-        name: country.name
+        name: $("#name").val()
     };
     let msg = {
         type:"update",
         content:JSON.stringify(f)
     };
+    
+    console.log(f);
+    console.log(msg);
     sendMsg(msg);
     $("#addCountryModal").modal("hide");
     $("#successModal").modal("show");
