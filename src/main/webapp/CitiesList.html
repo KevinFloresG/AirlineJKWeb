@@ -111,7 +111,7 @@
                                 <tr class="tableTitle d-flex">
                                     <th scope="col" class="col-2">Código</th>
                                     <th scope="col" class="col-3">Nombre</th>
-									<th scope="col" class="col-3">País</th>
+				    <th scope="col" class="col-3">País</th>
                                     <th scope="col" class="col-4"></th>
                                 </tr>
                                 <!-- Inputs for Searching -->
@@ -119,14 +119,15 @@
                                     <th scope="col" class="col-2">
                                         <input class="form-control" type="text" id="cityCode">
                                     </th>
-									<th scope="col" class="col-3">
+                                    
+				    <th scope="col" class="col-3">
                                         <input class="form-control" type="text" id="cityName">
                                     </th>
-									<th scope="col" class="col-3">
+				    <th scope="col" class="col-3">
                                         <input class="form-control" type="text" id="cityCountry">
                                     </th>
                                     <th scope="col" class="col-2"><button class="btn btn-primary" id="searchCities"><i class="fas fa-search"> Buscar</i></button></th>
-                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addCityModal"><i class="fas fa-plus"> Agregar</i></button></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" id="addNewCityBtn"><i class="fas fa-plus"> Agregar</i></button></th>
                                 </tr>
                                 </thead>
                             </table>
@@ -135,18 +136,16 @@
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
                                 <tbody class="tableBody" id="citiesList">
-								<tr class="d-flex">
-									<td class="col-2">SJO</td>
-									<td class="col-3">San José</td>
-									<td class="col-3">Costa Rica</td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
-                                </tr>
-                                
-                            </table>
-								
+				    <tr class="d-flex">
+					<td class="col-2">SJO</td>
+					<td class="col-3">San José</td>
+					<td class="col-3">Costa Rica</td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' ></td>
+                                    </tr>
                                 </tbody>
                             </table>
+								
                         </div>
                     </div>
                 </div>
@@ -212,9 +211,9 @@
             <!-- Modal body -->
             <div class="modal-body" id="addCityBody">
                 
-                <div class="title container-fluid">Agregar una Ciudad</div>
+                <div class="title container-fluid" id="cityModalTitle">Agregar una Ciudad</div>
                 <br> <br>
-				<form id="cityForm" class="needs-validation" novalidate>
+		<form id="cityForm" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="col-md-1 mb-3">
 
@@ -227,7 +226,7 @@
                             </div>
                         </div>
 						
-						<div class="col-md-1 mb-3"></div>
+			<div class="col-md-1 mb-3"></div>
 						
                         <div class="col-md-3 mb-3">
                             <label for="name"><b>Nombre:</b></label>
@@ -236,17 +235,17 @@
                                 Debe indicar el nombre de la ciudad.
                             </div>
                         </div>
-						<div class="col-md-1 mb-3"></div>
+			<div class="col-md-1 mb-3"></div>
 						
-						<div class="col-md-3 mb-3">
-						<label for="countries"><b>País:</b></label>
-							<select name="countries" id="countries" class="form-control" required>
-							  <option value="CR">Costa Rica</option>
-							</select>
-							<div class="invalid-feedback">
-                                Debe indicar el país de la ciudad.
-                            </div>
-						</div>
+			    <div class="col-md-3 mb-3">
+				<label for="countries"><b>País:</b></label>
+				<select name="countries" id="countries" class="form-control" required>
+				    <option value="">Seleccione una opc.</option>
+				</select>
+                                <div class="invalid-feedback">
+                                    Debe indicar el país de la ciudad.
+                                </div>
+			    </div>
                     </div>
                    
                 </form>
@@ -258,7 +257,8 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addCityB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+		<button type="button" id="addCityB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+                <button type="button" id="updateCityB" class="btn btn-primary" hidden>Actualizar</button>
             </div>
         </div>
     </div>
@@ -289,8 +289,7 @@
 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            <div id="confirmDeleteModalBody" class="modal-body">
-				¿ Está seguro de que desea eliminar la siguiente ciudad: CODE - NAME, COUNTRY ?
+            <div id="confirmDeleteModalBody" class="modal-body">			
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
@@ -305,5 +304,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="module" src="js/index.js"></script>
+<script type="module" src="js/city_list.js"></script>
 </body>
 </html>
