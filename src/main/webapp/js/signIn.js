@@ -31,7 +31,7 @@ async function addUser(){
         workphone: $("#workphone").val(),
         cellphone: $("#cellphone").val(),
         isAdmin:0};   
-    console.log(user);
+    
     let requestBody = {
         method:"POST",
         headers:{
@@ -43,12 +43,11 @@ async function addUser(){
     let response = await fetch("/AirlineJK/users/add", requestBody);
     
     
-    console.log(response.ok)
     if(response.ok)
         $("#successModal").modal("show");
-    else{
+    else
         window.alert("Ha ocurrido un error, por favor intente de nuevo o cambie su username.");
-    }
+    
 }
 
 function toIndex(){

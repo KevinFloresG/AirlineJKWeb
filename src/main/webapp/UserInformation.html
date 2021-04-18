@@ -92,10 +92,10 @@
         <div class="col-md-1"></div>
         <!-- Principal Container -->
         <div class="col-md-10 pt-3 principal-container" style="opacity: 0.95;">
-            <div id="officerFormDiv">
+            <div id="userInfoFormDiv">
                 <div class="title container-fluid">Información Personal</div>
                 <br>
-                <form id="userForm" class="needs-validation" novalidate>
+                <form id="userPInfoForm" class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="username"> <b>Username:</b></label>
@@ -125,24 +125,27 @@
                             <div class="invalid-feedback">
                                 Debe indicar su fecha de nacimiento.
                             </div>
-						</div>	
-						<div class="col-md-3 mb-3">
+			</div>	
+			<div class="col-md-3 mb-3">
                             <label for="email"><b>Correo Electrónico:</b></label>
-                            <input type="text" class="form-control" id="email" placeholder="Correo Electrónico" readonly>
+                            <input type="text" class="form-control" id="email" placeholder="Correo Electrónico" readonly required>
                             <div class="invalid-feedback">
                                 Debe registrar su email.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="workphone"><b>Teléfono de trabajo:</b></label>
-                            <input type="text" maxlength="15" class="form-control" id="workphone" placeholder="Ej: 22222222" readonly>
+                            <input type="text" maxlength="15" class="form-control" id="workphone" placeholder="Ej: 22222222" readonly required>
                             <div class="invalid-feedback">
                                 Debe registrar el número de teléfono de su trabajo.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cellphone"><b>Teléfono Personal:</b></label>
-                            <input type="text" maxlength="15" class="form-control" id="cellphone" placeholder="Ej: 88888888" readonly>
+                            <input type="text" maxlength="15" class="form-control" id="cellphone" placeholder="Ej: 88888888" readonly required>
+                            <div class="invalid-feedback">
+                                Debe registrar su teléfono celular.
+                            </div>
                         </div>
                         </div>
                     
@@ -150,16 +153,16 @@
 						<div class="col-md-4 mb-3"> </div>
                         <div class="col-md-4 mb-3">
                             <label for="address"><b>Dirección:</b></label>
-                            <textarea id="address" class="form-control" style="resize: none;" rows="3" cols="50" placeholder="Dirección" readonly></textarea>
+                            <textarea id="address" class="form-control" style="resize: none;" rows="3" cols="50" placeholder="Dirección" readonly required></textarea>
                             <div class="invalid-feedback">
-                                Se debe registrar una dirección.
+                                Debe registrar su dirección.
                             </div>
                         </div>
                     </div>
                     <center>
-						<button class="btn btn-lg btn-primary mt-3" type="button" id="updateOptions">Actualizar</button>
-                        <button class="btn btn-md btn-danger mt-3" type="button" id="cancelUpdate" hidden>Cancelar</button>
-						<button class="btn btn-md btn-primary mt-3" type="button" id="updateUser" hidden>Confirmar</button>
+			<button class="btn btn-lg btn-primary mt-3" type="button" id="enableUpdate">Actualizar</button>
+                        <button class="btn btn-md btn-primary mt-3" type="button" id="cancelUpd" hidden>Cancelar</button>
+			<button class="btn btn-md btn-primary mt-3" type="button" id="updateUser" hidden>Confirmar</button>
                     </center>
                 </form>
             </div>
@@ -170,8 +173,6 @@
 
         <div class="col-md-1"></div>
     </div>
-
-</div>
 
 <footer>
     <div class="container-fluid">
@@ -233,5 +234,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="module" src="js/index.js"></script>
+<script type="module" src="js/userInfo.js"></script>
 </body>
 </html>
