@@ -13,6 +13,7 @@ function load(){
     $("#addCityB").on("click", ()=>addCity());
     $("#updateCityB").on("click", ()=>updateCity(GlobalCity));
     loadCountrySelect("#countries");
+    testTop5Routes();
 }
 
 
@@ -152,4 +153,16 @@ function addCity(){
     sendMsg(msg);
     $("#addCityModal").modal("hide");
     $("#successModal").modal("show");
+}
+
+async function testTop5Routes(){
+    let requestBody = {
+        method:"GET",
+        headers:{
+            'Content-Type':'application/json'
+        }
+    };
+    let response = await fetch("/AirlineJK/routes/getTop5", requestBody);
+    let result = await response.json();
+    console.log(result);
 }
