@@ -3,7 +3,7 @@
 $(load);
 
 function load(){
-    $("#userForm").submit(e=>verifyInputs(e, addUser));
+    $("#registerUser").on("click",e=>verifyInputs(e, addUser));
     $("#continueB").on("click",toIndex);
 }
 
@@ -21,11 +21,11 @@ function verifyInputs(event, funct){
 }
 
 async function addUser(){   
-    let user = { username:$("#fUserName").val(),
+    let user = { "username":$("#fUserName").val(),
         name:$("#name").val(),
         lastname:$("#lastName1").val()+" "+$("#lastName2").val(),
         email: $("#email").val(),
-        dateOfBirth: $("#dateOfBirth").val(),
+        dateOfBirth: new Date($("#dateOfBirth").val()),
         password:$("#fPassword").val(),
         address: $("#address").val(),
         workphone: $("#workphone").val(),
@@ -41,6 +41,7 @@ async function addUser(){
     };
 
     const response = await fetch("/AirlineJK/users/add", requestBody);
+    
     
     if(response.ok)
         $("#successModal").show();
