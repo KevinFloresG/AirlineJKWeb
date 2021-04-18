@@ -1,4 +1,5 @@
-import {WSflight, typeOfFlight, datesOfFlight, toDate} from './utils/flight.js'
+import {WSflight, typeOfFlight, datesOfFlight} from './utils/flight.js';
+import {toDate} from './utils/dates.js';
 
 let wsflight, GlobalFlight;
 
@@ -61,7 +62,7 @@ function flightTr(f, type){
         "<td scope='col' class='col-2'>"+typeOfFlight(f)+"</td>"+
         "<td scope='col' class='col-2'>"+f.route.origin.name+"</td>"+
         "<td scope='col' class='col-2'>"+f.route.destination.name+"</td>"+
-        "<td scope='col' class='col-2'>"+datesOfFlight(f)+"</td>"+
+        "<td scope='col' class='col-2'>"+datesOfFlight(f, toDate)+"</td>"+
         "<td class='col-1'>"+
             "<i id='edit-"+f.id+"' style='cursor: pointer;' class='fas fa-edit fa-l-blue'>"+
         "</td>"+
