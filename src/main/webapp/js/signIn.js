@@ -21,7 +21,7 @@ function verifyInputs(event, funct){
 }
 
 async function addUser(){   
-    let user = { "username":$("#fUserName").val(),
+    let user = { username:$("#fUserName").val(),
         name:$("#name").val(),
         lastname:$("#lastName1").val()+" "+$("#lastName2").val(),
         email: $("#email").val(),

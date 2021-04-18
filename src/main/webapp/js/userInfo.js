@@ -15,8 +15,8 @@ async function loadUserInfo(){
         
         let response = await fetch("/AirlineJK/users/get?id="+cUser);
         let user = await response.json();
-        
-        $("#fUserName").val(user.username);
+        console.log(user);
+        $("#username").val(user.username);
         $("#name").val(user.name);
         var lastName = user.lastname;
         var lN = lastName.split(" ");

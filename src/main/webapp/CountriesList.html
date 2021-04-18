@@ -118,11 +118,11 @@
                                     <th scope="col" class="col-3">
                                         <input class="form-control" type="text" id="countryCode">
                                     </th>
-									<th scope="col" class="col-5">
+				    <th scope="col" class="col-5">
                                         <input class="form-control" type="text" id="countryName">
                                     </th>
                                     <th scope="col" class="col-2"><button class="btn btn-primary" id="searchCountries"><i class="fas fa-search"> Buscar</i></button></th>
-                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addCountryModal"><i class="fas fa-plus"> Agregar</i></button></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addNewCountryBtn"><i class="fas fa-plus"> Agregar</i></button></th>
                                 </tr>
                                 </thead>
                             </table>
@@ -131,17 +131,15 @@
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
                                 <tbody class="tableBody" id="countriesList">
-								<tr class="d-flex">
-									<td class="col-3">CR</td>
-									<td class="col-5">Costa Rica</td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
+				<tr class="d-flex">
+					<td class="col-3">CR</td>
+					<td class="col-5">Costa Rica</td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
                                 </tr>
-                                
-                            </table>
-								
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
@@ -207,13 +205,12 @@
             <!-- Modal body -->
             <div class="modal-body" id="addCountryBody">
                 
-                <div class="title container-fluid">Agregar un País</div>
+                <div id="countryModalTitle" class="title container-fluid"></div>
                 <br> <br>
-				<form id="countryForm" class="needs-validation" novalidate>
+		<form id="countryForm" class="needs-validation" novalidate>
                     <div class="form-row">
-                        <div class="col-md-3 mb-3">
-
-                        </div>
+                        
+                        <div class="col-md-3 mb-3"></div>
                         <div class="col-md-3 mb-3">
                             <label for="code"> <b>Código:</b> </label>
                             <input type="text" class="form-control" id="code" placeholder="Código" required>
@@ -222,9 +219,6 @@
                             </div>
                         </div>
 						
-						<div class="col-md-1 mb-3">
-
-                        </div>
                         <div class="col-md-3 mb-3">
                             <label for="name"><b>Nombre:</b></label>
                             <input type="text" class="form-control" id="name" placeholder="Nombre" required>
@@ -232,21 +226,18 @@
                                 Debe indicar el nombre del país.
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-
-                        </div>
+                        <div class="col-md-3 mb-3"></div>
+                        
                     </div>
                    
                 </form>
-
-
-
 
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addCountryB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+		<button type="button" id="addCountryB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+                <button type="button" id="updateCountryB" class="btn btn-primary" hidden>Actualizar</button>
             </div>
         </div>
     </div>
@@ -278,7 +269,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div id="confirmDeleteModalBody" class="modal-body">
-				¿ Está seguro de que desea eliminar el siguiente país: CODE - NAME?
+				
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
@@ -293,5 +284,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="module" src="js/index.js"></script>
+<script type="module" src="js/country_list.js"></script>
 </body>
 </html>
