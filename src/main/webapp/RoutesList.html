@@ -98,7 +98,7 @@
         <div class="col-md-1"></div>
         <!-- Principal Container -->
         <div class="col-md-10 pt-3 principal-container" style="opacity: 0.95;">
-            <div id="AirplaneTypesListDiv">
+            <div id="routesListDiv">
                 <div class="title container-fluid">Listado de Rutas</div>
                 <br>
                 <!-- Begin of Table -->
@@ -110,24 +110,24 @@
                                 <!-- Column Titles -->
                                 <tr class="tableTitle d-flex">
                                     <th scope="col" class="col-2">Id</th>
-									<th scope="col" class="col-2">C. Origen</th>
+				    <th scope="col" class="col-2">C. Origen</th>
                                     <th scope="col" class="col-2">C. Destino</th>
-									<th scope="col" class="col-2">Horario</th>
+				    <th scope="col" class="col-2">Horario</th>
                                     <th scope="col" class="col-4"></th>
                                 </tr>
                                 <!-- Inputs for Searching -->
                                 <tr class="d-flex">
                                     <th scope="col" class="col-2">
                                     </th>
-									<th scope="col" class="col-2">
+				<th scope="col" class="col-2">
                                         <input class="form-control" type="text" id="routeOrigin">
                                     </th>
-									<th scope="col" class="col-2">
+				<th scope="col" class="col-2">
                                         <input class="form-control" type="text" id="routeDestination">
                                     </th>
-									<th scope="col" class="col-2"></th>
+				<th scope="col" class="col-2"></th>
                                     <th scope="col" class="col-2"><button class="btn btn-primary" id="searchRoutes"><i class="fas fa-search"> Buscar</i></button></th>
-                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addRouteModal"><i class="fas fa-plus"> Agregar</i></button></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" id="addNewRouteBtn"><i class="fas fa-plus"> Agregar</i></button></th>
                                 </tr>
                                 </thead>
                             </table>
@@ -135,20 +135,18 @@
                         <!-- Table Content -->
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
-                                <tbody class="tableBody" id="routesList">
-								<tr class="d-flex">
-									<td class="col-2">ITA-CR 1</td>
-									<td class="col-2">Roma, Italia</td>									
-									<td class="col-2">SJO, Costa Rica</td>
-									<td class="col-2">Lunes - 10:00</td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
+                                <tbody class="tableBody" id="aRoutesList">
+				<tr class="d-flex">
+					<td class="col-2">ITA-CR 1</td>
+					<td class="col-2">Roma, Italia</td>									
+					<td class="col-2">SJO, Costa Rica</td>
+					<td class="col-2">Lunes - 10:00</td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
+					<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' ></td>
                                 </tr>
                                 
-                            </table>
-								
-                                </tbody>
-                            </table>
+                                  </tbody>
+                            </table>								
                         </div>
                     </div>
                 </div>
@@ -203,7 +201,7 @@
     </div>
 </footer>
 
-<!-- Add AirplaneType Modal -->
+<!-- Add Route Modal -->
 <div id="addRouteModal" class="modal fade" >
     <div class="modal-dialog modal-dialog-centered modal-confirm modal-lg">
         <div class="modal-content" style="background-color: #CCCCCC;">
@@ -214,9 +212,9 @@
             <!-- Modal body -->
             <div class="modal-body" id="addRouteBody">
                 
-                <div class="title container-fluid">Agregar una Ruta</div>
+                <div class="title container-fluid" id="routeModalTitle">Agregar una Ruta</div>
                 <br> <br>
-				<form id="routeForm" class="needs-validation" novalidate>
+		<form id="routeForm" class="needs-validation" novalidate>
                     <div class="form-row">
 					
                         <div class="col-md-1 mb-3"></div>
@@ -234,9 +232,8 @@
                         <div class="col-md-3 mb-3">
                             <label for="origin"><b>Origen:</b></label>
                             <select name="origin" id="origin" class="form-control" required>
-							  <option value="SJ">San José, Costa Rica</option>
-							  <option value="TOR">Toronto, Canada</option>
-							</select>
+				<option value="">Seleccione</option>
+			    </select>
                             <div class="invalid-feedback">
                                 Debe indicar el origen de la ruta.
                             </div>
@@ -244,12 +241,11 @@
 						
 
 						
-						<div class="col-md-3 mb-3">
+			<div class="col-md-3 mb-3">
                             <label for="destination"><b>Destino:</b></label>
                             <select name="destination" id="destination" class="form-control" required>
-							  <option value="SJ">San José, Costa Rica</option>
-							  <option value="TOR">Toronto, Canada</option>
-							</select> 
+				<option value="">Seleccione</option>
+			    </select> 
                             <div class="invalid-feedback">
                                 Debe indicar el destino de la ruta.
                             </div>
@@ -263,9 +259,8 @@
 					    <div class="col-md-3 mb-3">
                             <label for="plane"> <b>Avión:</b> </label>
                             <select name="plane" id="plane" class="form-control" required>
-							  <option value="Z8C91">1B-B777 - 50 asientos</option>
-							  <option value="W8R62">13-B747 - 80 asientos</option>
-							</select>
+				<option value="">Seleccione</option>
+			    </select>
                             <div class="invalid-feedback">
                                 Debe indicar el avión asignado a la ruta.
                             </div>
@@ -276,9 +271,8 @@
 						<div class="col-md-3 mb-3">
                             <label for="schedules"> <b>Horario:</b> </label>
                             <select name="schedules" id="schedules" class="form-control" required>
-							  <option value="1">Lunes - 10:00</option>
-							  <option value="2">Martes - 06:00</option>
-							</select>
+				<option value="">Seleccione</option>
+			    </select>
                             <div class="invalid-feedback">
                                 Debe indicar el horario de la ruta.
                             </div>
@@ -292,7 +286,7 @@
                             </div>
                         </div>
 						
-						<div class="col-md-2 mb-3">
+			<div class="col-md-2 mb-3">
                             <label for="duration"> <b>Duración (m):</b> </label>
 							<input type="number" class="form-control" id="minutes" value="30" min="0" max="60" step="1" required>
                             <div class="invalid-feedback">
@@ -314,7 +308,8 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addRouteB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+                <button type="button" id="updateRouteB" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
+		<button type="button" id="addRouteB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
             </div>
         </div>
     </div>
@@ -346,7 +341,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div id="confirmDeleteModalBody" class="modal-body">
-				¿ Está seguro de que desea eliminar la siguiente ruta: ID - Origen - Destino - Horario?
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>

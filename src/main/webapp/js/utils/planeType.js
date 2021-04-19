@@ -1,0 +1,34 @@
+
+function WSairplaneType(){
+    return new WebSocket("ws://localhost:8088/AirlineJK/airplaneType");
+}
+
+async function loadPlaneTypeSelect(selectId){
+    
+    let requestBody = {
+        method:"GET",
+        headers:{
+            'Content-Type':'application/json'
+        }
+    };
+    let response = await fetch("/AirlineJK/planetypes/all", requestBody);
+    let planetypes = await response.json();
+    listPlaneTypes(planetypes,selectId);
+                   
+} 
+  
+function listPlaneTypes(planetypes,selectId){
+   planetypes.forEach( (c)=>{addPlaneType(c, selectId);});	
+}
+  
+function addPlaneType(airplaneType,selectId){   
+      
+    $(selectId).append($('<option>', {
+    value: airplaneType.id,
+    text: airplaneType.name+", "+airplaneType.country.id
+    }));                          
+}
+
+export {WSairplaneType,loadPlaneTypeSelect};
+
+
