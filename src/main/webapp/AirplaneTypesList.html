@@ -128,7 +128,7 @@
                                     </th>
 									<th scope="col" class="col-2"></th>
                                     <th scope="col" class="col-2"><button class="btn btn-primary" id="searchATypes"><i class="fas fa-search"> Buscar</i></button></th>
-                                    <th scope="col" class="col-2"><button class="btn btn-primary" data-toggle="modal" data-target="#addAirplaneTypeModal"><i class="fas fa-plus"> Agregar</i></button></th>
+                                    <th scope="col" class="col-2"><button class="btn btn-primary" id="addNewAirplaneTypeBtn"><i class="fas fa-plus"> Agregar</i></button></th>
                                 </tr>
                                 </thead>
                             </table>
@@ -137,19 +137,13 @@
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
                                 <tbody class="tableBody" id="airplaneTypesList">
-								<tr class="d-flex">
-									<td class="col-2">B747</td>
-									<td class="col-2">Boeing</td>									
-									<td class="col-2">747</td>
-									<td class="col-2">366</td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-edit fa-l-blue'></td>
-									<td class="col-2"><i style='cursor: pointer;' class='fas fa-ban fa-l-red' data-toggle="modal" data-target="#confirmDeleteModal"></td>
-                                </tr>
+
                                 
+                                   </tbody>
                             </table>
 								
-                                </tbody>
-                            </table>
+                             
+
                         </div>
                     </div>
                 </div>
@@ -215,7 +209,7 @@
             <!-- Modal body -->
             <div class="modal-body" id="addAirplaneTypeBody">
                 
-                <div class="title container-fluid">Agregar un Tipo de Avión</div>
+                <div class="title container-fluid" id="airplaneTypeModalTitle"></div>
                 <br> <br>
 				<form id="airplaneTypeForm" class="needs-validation" novalidate>
                     <div class="form-row">
@@ -283,7 +277,8 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addAirplaneTypeB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+		<button type="button" id="addAirplaneTypeB" class="btn btn-primary" data-dismiss="modal">Agregar</button>
+                <button type="button" id="updateAirplaneTypeB" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
             </div>
         </div>
     </div>
@@ -315,7 +310,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div id="confirmDeleteModalBody" class="modal-body">
-				¿ Está seguro de que desea eliminar el siguiente tipo de avión: ID - BRAND - MODEL?
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
@@ -330,5 +325,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="module" src="js/index.js"></script>
+<script type="module" src="js/airplaneTypes_list.js"></script>
 </body>
 </html>
