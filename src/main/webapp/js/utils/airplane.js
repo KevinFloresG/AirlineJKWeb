@@ -25,7 +25,7 @@ function addAirplane(airplane,selectId){
       
     $(selectId).append($('<option>', {
     value: airplane.id,
-    text: airplane.id+"-"+airplane.airplaneType.brand+" "+airplane.airplaneType.passangersQ+" A."
+    text: airplane.id+"-"+airplane.airplaneType.brand+" "+airplane.airplaneType.passengersQ+" A."
     }));                          
 }
 
