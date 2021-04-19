@@ -3,10 +3,14 @@
 <head>
 	<title>Aerolinea Flores & Amador - Index</title>
 	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<link href="css/header.css" rel="stylesheet" type="text/css">
 	<link href="css/standardPage.css" rel="stylesheet" type="text/css">
 	<link href="css/styleLogin.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
 </head>
 <body>
@@ -83,6 +87,7 @@
 </nav>
 <!-- Content background-image: url('images/airport4k.jpg'); -->
 
+
 <div id="Carousel" class="carousel slide" style="width:100%;" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#Carousel" data-slide-to="0" class="active"></li>
@@ -124,7 +129,18 @@
 
 
 
-
+<div class="container">
+  <div class="toast" style="position: absolute; top: 20%; right: 45%;"  data-autohide="false">
+    <div class="toast-header">
+      <strong class="mr-auto text-primary">Vuelos en Oferta</strong>
+      <small class="text-muted">Today</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body" id="toastBody">
+        
+    </div>
+  </div>
+</div>
 
 
 <footer>
@@ -221,8 +237,6 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="module" src="js/index.js"></script>
 </body>
 </html>
