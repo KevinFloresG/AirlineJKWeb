@@ -93,8 +93,6 @@
 </nav>
 <!-- Content -->
 <div class="content-fluid" style="background-image: url('images/airport4k.jpg'); height: 100%; witdth: 100%;">
-
-
 <br> 
 <div id="searchDiv">
  <div class="row mt-3">
@@ -110,14 +108,16 @@
                     <div class="form-row">
 					<div class="col-md-3 mb-3"></div>
                         <div class="col-md-3 mb-3">
-                                <input type="text" class="form-control" id="reservationId" maxlength="20" placeholder="# de Reservación" required>
+                                <input type="text" class="form-control" id="reservationId" maxlength="20" placeholder="Código de Reservación" required>
                                 <div class="invalid-feedback">
                                     Debe indicar un # de reservación.
                                 </div>
                         </div>
 						<div class="col-md-1 mb-3"></div>
                         <div class="col-md-3 mb-3">
-                            <button class="btn btn-lg btn-primary" id="searchReservation"><i class="fas fa-search"> Buscar</i>
+                            <button type="button" class="btn btn-lg btn-primary" id="searchReservation">
+                                <i class="fas fa-search"> Buscar</i>
+                            </button>
                         </div>
                         </div>
                 </form> 
@@ -133,8 +133,7 @@
 
 </div>
 <center>
-<br> <br> <br> <br> 
-<div id="checkInDiv">
+<div id="checkInDiv" hidden>
  <div class="row mt-3">
         <div class="col-md-1"></div>
         <!-- Principal Container -->
@@ -142,102 +141,50 @@
             <div id="CheckInDiv">
                 <div class="title container-fluid">Check In</div>
                 <br>
-              
-			<form id="checkInForm" class="needs-validation" novalidate>
-
+                <form id="checkInForm" class="needs-validation" novalidate>
                     <div class="form-row">
-						<div class="col-md-2 mb-3"></div>
-                        <div class="col-md-1 mb-3">
-							<label for="rId"><b>Reserva:</b></label>
-                            <input type="number" class="form-control" id="rId" value="1241" readonly>
-                        </div>
-						
-
-						
-                        <div class="col-md-3 mb-3">
-							<label for="flightInfo"><b>Vuelo:</b></label>
-                            <input type="text" class="form-control" id="flightInfo" value="123 ITA-CR-1" readonly>
-                        </div>
-
+                        <div class="col-md-2 mb-3"></div>
                         <div class="col-md-2 mb-3">
-							<label for="departureDate"><b>F. de Ida:</b></label>
-                            <input type="text" class="form-control" id="departureDate" value="  01/01/2021 10:00" readonly>
+                            <label for="rId"><b>Reserva:</b></label>
+                            <input type="number" class="form-control" id="rId" readonly>
+                        </div>			
+                        <div class="col-md-4 mb-3">
+                            <label for="flightInfo"><b>Vuelo:</b></label>
+                            <input type="text" class="form-control" id="flightInfo"  readonly>
                         </div>
-
                         <div class="col-md-2 mb-3">
-							<label for="departureDate"><b>F. de Regreso:</b></label>
-                            <input type="text" class="form-control" id="returnDate" value="  No Aplica" readonly>
-                        </div>						
-                    </div>
-					
-					<div class="form-row">
-						<div class="col-md-2 mb-3"></div>
-                        <div class="col-md-1 mb-3">
-							<label for="duration"><b>Duración:</b></label>
-                            <input type="text" class="form-control" id="duration" value="12:21 h" readonly>
+                            <label for="departureDate"><b>F. Checkin:</b></label>
+                            <input type="text" class="form-control" id="checkinDate"  readonly>
                         </div>
-						
-
-						
+                        <div class="col-md-2 mb-3"></div>
+                    </div>	
+                    <div class="form-row">
+                        <div class="col-md-2 mb-3"></div>
+                        <div class="col-md-3 mb-3">
+                            <label for="duration"><b>Duración:</b></label>
+                            <input type="text" class="form-control" id="duration" readonly>
+                        </div>			
                         <div class="col-md-2 mb-3">
-							<label for="arrivalTime"><b>Hora de llegada:</b></label>
-                            <input type="text" class="form-control" id="arrivalTime" value="       Fecha 22:21 h" readonly>
-                        </div>
-
-                        <div class="col-md-1 mb-3">
-							<label for="seatRQ"><b>Asientos R:</b></label>
-                            <input type="number" class="form-control" id="seatRQ" value="2" readonly>
-                        </div>
-						
-						
-                        <div class="col-md-1 mb-3">
-							<label for="cInQuantity"><b>Tiquetes C:</b></label>
-                            <input type="number" class="form-control" id="cInQuantity" value="0" readonly>
-                        </div>
-
+                            <label for="seatRQ"><b>Asientos R:</b></label>
+                            <input type="number" class="form-control" id="seatRQ" readonly>
+                        </div>		
                         <div class="col-md-3 mb-3">
-							<label for="totalPrice"><b>Costo Total:</b></label>
-                            <input type="text" class="form-control" id="totalPrice" value="   1200000 Colones" readonly>
-                        </div>						
+                            <label for="totalPrice"><b>Costo Total:</b></label>
+                            <input type="text" class="form-control" id="totalPrice" readonly>
+                        </div>	
+                        <div class="col-md-2 mb-3"></div>
                     </div>
-					
-					
-					<div class="form-row">
-						<div class="col-md-2 mb-3"></div>
-                        <div class="col-md-1 mb-3">
-                        </div>
-						
-
-						
-                        <div class="col-md-5 mb-3">
-							<label for="F"><b>CAMPO PARA LA SELECCION DE ASIENTOS:</b></label>
-                            <input type="text" class="form-control" id="F" value="F" readonly>
-                        </div>
-
-                        <div class="col-md-1 mb-3">
-
-                        </div>
-
-                        <div class="col-md-3 mb-3">
-
-                        </div>						
-                    </div>
-
-            </form> 
-			  
-			        <center>
-                        <button class="btn btn-lg btn-primary mt-3" type="submit" id="checkIn" data-toggle="modal" data-target="#seatSelectionModal">Check In</button>
-                    </center>
-			  
-			  
+                </form> 
+		<center>
+                    <button class="btn btn-lg btn-primary mt-3" type="button" id="checkIn">
+                        Check In
+                    </button>
+                </center>	  
             </div>
         </div>
-
         <div class="col-md-1"></div>
     </div>
-
 </div>
-
 </center>
 </div>
 
@@ -255,7 +202,7 @@
                             <small class="text-justify">
                                 <div>
                                     Este es un sistema de gestión de vuelos para clientes y administradores realizado
-									como un laboratorio de repaso del curso Diseño y Programación de Plataformas Móviles.
+                                    como un laboratorio de repaso del curso Diseño y Programación de Plataformas Móviles.
                                     
                                 </div>
                             </small>
@@ -283,33 +230,6 @@
     </div>
 </footer>
 
-<!-- Seat Selection Modal -->
-<div id="seatSelectionModal" class="modal fade" >
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-confirm ">
-        <div class="modal-content" style="background-color: #CCCCCC;">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body" id="seatSelectionBody">
-                
-                <div class="title container-fluid">Selección de Asientos</div>
-                <br> <br>
-				
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				<button type="button" id="addAirplaneTypeB" class="btn btn-primary" data-dismiss="modal">Finalizar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Of Seat Selection Modal -->
-
-
-
 <!-- Success Modal -->
 <center>
     <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="successModal" style="">
@@ -324,13 +244,11 @@
 </center>
 <!-- End of Success Modal -->
 
-
-
-
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="module" src="js/index.js"></script>
+<script src="js/checkinFirst.js" type="module"></script>
 </body>
 </html>

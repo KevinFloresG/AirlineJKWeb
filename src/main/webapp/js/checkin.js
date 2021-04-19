@@ -1,17 +1,29 @@
 import {WSticket} from './utils/ticket.js'
 
-let wsticket, flight = {id:1}, reservation={id:1, seatQuantity:3};
-let selectedTickets = new Map(), remainingSeats = reservation.seatQuantity;
+let wsticket, flight, reservation;
+let selectedTickets = new Map(), remainingSeats;
 
 $(load)
 
 function load(){
-    sessionStorage.setItem('flight',1)
+    flight = {id:sessionStorage.getItem('flight')}
+    remainingSeats = sessionStorage.getItem('seats')
+    reservation = {
+        id:sessionStorage.getItem('reservation'),
+        checkedInQuantity:remainingSeats
+    }
+    sessionStorage.removeItem('flight')
+    sessionStorage.removeItem('reservation')
+    sessionStorage.removeItem('seats')
     $("#remainingSets").text("Asientos Restantes: "+remainingSeats)
     $("#endCheck").on("click", endCheckin)
-    //$("#cancelCheck").on("click", cancelCheckin)
+    $("#cancelCheck").on("click", cancelCheckin)
     wsticket = WSticket()
     wsticket.onmessage = function(){processTicketMsg(event)}
+}
+
+function cancelCheckin(){
+    location.href="CheckIn.html"
 }
 
 function endCheckin(){
@@ -23,6 +35,16 @@ function endCheckin(){
             content: JSON.stringify(Array.from(selectedTickets.values()))
         }
         wsticket.send(JSON.stringify(wsmsg))
+        let body = {
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(reservation)   
+        }
+        fetch("/AirlineJK/reservations/update", body)
+        sessionStorage.setItem('checked',true)
+        location.href="CheckIn.html"
     }
 }
 
@@ -47,11 +69,11 @@ function ticketsUpd(tkts){
 }
 
 async function loadSeats(){
-    let response = await fetch("/AirlineJK/flights/get?id="+sessionStorage.getItem('flight'))
-    let flight2 = await response.json()
-    response = await fetch("/AirlineJK/tickets/get/flight?id="+sessionStorage.getItem('flight'))
+    let response = await fetch("/AirlineJK/flights/get?id="+flight.id)
+    flight = await response.json()
+    response = await fetch("/AirlineJK/tickets/get/flight?id="+flight.id)
     let ticketsList = await response.json()
-    let plane =  flight2.route.airplaneId.airplaneType
+    let plane =  flight.route.airplaneId.airplaneType
     let container = $("#seatsContainer"), ol, li, sub_li, id;
     container.html("")
     for(let row = 0; row < plane.rowQ; row = row + 1){
