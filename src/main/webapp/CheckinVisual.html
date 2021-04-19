@@ -7,13 +7,17 @@
     <link href="css/checkin.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="plane">
-        <div class="cockpit">
-            <h1>Selecciona tu Asiento(s)</h1>
+    <div style="margin-left: 35%; margin-top: 6%; max-width: 300px;">
+        <ol id="seatsContainer"></ol>
+    </div>
+    <div style="position: absolute; float: left; top: 10%;">
+        <h2 id="remainingSets" style="color:white;"></h2>
+        <div>
+            <a id="endCheck" class="myButton">Finalizar Check-in</a>
         </div>
-        <div class="exit exit--front fuselage"></div>
-        <ol id="seatsContainer" class="cabin fuselage"></ol>
-        <div class="exit exit--back fuselage"></div>
+        <div>
+            <a id="cancelCheck" class="myBtn2">Cancelar Check-in</a>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/checkin.js" type="module"></script>
