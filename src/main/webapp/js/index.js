@@ -12,7 +12,7 @@ function offerInfo(o){
     let des = o.route.destination
     let unir = ori.name + ", " + ori.country.id + " - " + 
             des.name + ", " + des.country.id;
-    let as = "<div> Lugares Disponiibles: " + o.availableSeats + "</div>"
+    let as = "<div> Lugares Disponibles: " + o.availableSeats + "</div>"
     let dis = "<div> Descuento: " + o.discount * 100 + "%</div>"
     unir = "<div> Ruta: " + unir + "</div>"
     return unir + as + dis;
