@@ -135,17 +135,7 @@
                         <!-- Table Content -->
                         <div class="tableContent">
                             <table class="table table-hover table-striped table-bordered">
-                                <tbody class="tableBody" id="userReservationList">
-                                    <!--
-                                    <tr class="d-flex">
-                                        <td class="col-4">321 - ITA-CR</td>									
-                                        <td class="col-1">1</td>
-                                        <td class="col-3">3000 - DOL</td>
-                                        <td class="col-2">Pendiente</td>
-                                        <td class="col-2" >
-                                            <i style='cursor: pointer;' class='fas fa-info-circle fa-l-blue' data-toggle="modal" data-target="#reservationModal"></i>
-                                        </td>
-                                    </tr>	-->		
+                                <tbody class="tableBody" id="userReservationList">	-->		
                                 </tbody>
                             </table>
                         </div>
@@ -154,10 +144,8 @@
                 <!-- End Of table -->
             </div>
         </div>
-
         <div class="col-md-1"></div>
     </div>
-
 </div>
 
 <footer>
@@ -174,8 +162,7 @@
                             <small class="text-justify">
                                 <div>
                                     Este es un sistema de gestión de vuelos para clientes y administradores realizado
-									como un laboratorio de repaso del curso Diseño y Programación de Plataformas Móviles.
-                                    
+				    como un laboratorio de repaso del curso Diseño y Programación de Plataformas Móviles.
                                 </div>
                             </small>
                         </div>
@@ -212,79 +199,46 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body" id="reservationBody">
-                
-                <div class="title container-fluid">Detalle de la reserva</div>
-                <br> <br>
-				<form id="reservationForm" class="needs-validation" novalidate>
-                    <div class="form-row">
-					
-                        <div class="col-md-1 mb-3"></div>
-						
-                        <div class="col-md-3 mb-3">
+                <div class="title container-fluid">Detalle de la reserva</div><br>
+		<form id="reservationForm" class="needs-validation" novalidate>
+                    <div class="form-row">			
+                        <div class="col-md-2 mb-1"></div>	
+                        <div class="col-md-2 mb-3">
                             <label for="id"> <b>Id:</b> </label>
                             <input type="text" class="form-control" id="id" readonly>
-                        </div>
-						
-
-						
-                        <div class="col-md-4 mb-3">
+                        </div>			
+                        <div class="col-md-4 mb-4">
                             <label for="flightInfo"><b>Vuelo:</b></label>
                             <input type="text" class="form-control" id="flightInfo" readonly>
-                            <input type="hidden" id="flightId">
                         </div>			
 			<div class="col-md-2 mb-3">
                             <label for="airplane"><b>Id del Avión:</b></label>
                             <input type="text" class="form-control" id="airplane" readonly>
                         </div>
-						
+                        <div class="col-md-2 mb-3"></div>	
                     </div>
-					<div class="form-row">
-					
+                    <div class="form-row">			
                         <div class="col-md-1 mb-3"></div>
-						
                         <div class="col-md-3 mb-3">
-                            <label for="seats"> <b>Asientos:</b> </label>
-                            <input type="number" class="form-control" id="seats" readonly>
-                        </div>
-						
-						
-                        <div class="col-md-3 mb-3">
-                            <label for="price"> <b>Costo:</b> </label>
-                            <input type="number" class="form-control" id="price" readonly>
-                        </div>
-						
-						<div class="col-md-3 mb-3">
                             <label for="payType"> <b>Tipo de pago:</b> </label>
                             <input type="text" class="form-control" id="payType" readonly>
                         </div>
-						
-                        <div class="col-md-1 mb-3"></div>
-						
-						
-                    </div>
-
-        		<div class="form-row">
-					
-                        <div class="col-md-3 mb-3"></div>
-						
+                        <div class="col-md-2 mb-3">
+                            <label for="seats"> <b>Asientos:</b> </label>
+                            <input type="number" class="form-control" id="seats" readonly>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="price"> <b>Costo:</b> </label>
+                            <input type="number" class="form-control" id="price" readonly>
+                        </div>
                         <div class="col-md-3 mb-3">
                             <label for="state"> <b>Estado:</b> </label>
                             <input type="text" class="form-control" id="state" readonly>
-                        </div>
-						
-						
-						<div class="col-md-3 mb-3">
-                            <label for="checkedInQ"> <b>Tiquetes pendientes:</b> </label>
-                            <input type="number" class="form-control" id="checkedInQ" readonly>
-                        </div>
-						
-                        <div class="col-md-1 mb-3"></div>
-						
-						
+                        </div>	
+                        <div class="col-md-1 mb-3"></div>		
                     </div>							
-                   <br>
-				   <label for="rTicketsListD"> <b>Tiquetes:</b> </label>
-				   <div class="tableContainer" id="rTicketsListD">
+                <label for="rTicketsListD"> <b>Tiquetes:</b> </label>
+                <div class="tableContainer" id="rTicketsListD">
                     <div class="tableScrollX">
                         <div class="tableHeaderPadding">
                             <table class="table tableHeader">
@@ -302,7 +256,13 @@
                         <div class="tableContent" style="max-height: 200px;">
                             <table class="table table-hover table-striped table-bordered">
                                 <tbody class="tableBody" id="rTicketsList">
-								<tr class="d-flex">
+                                    
+				<tr class="d-flex">
+                                    <td scope="col" class="col-4">1231</td>
+                                    <td scope="col" class="col-4">24</td>
+                                    <td scope="col" class="col-4">5</td>
+                                </tr>
+                                <tr class="d-flex">
                                     <td scope="col" class="col-4">1231</td>
                                     <td scope="col" class="col-4">24</td>
                                     <td scope="col" class="col-4">5</td>
@@ -311,8 +271,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
-				   
+                </div>		   
                 </form>
             </div>
             <div class="modal-footer">
