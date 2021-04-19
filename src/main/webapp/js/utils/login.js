@@ -78,7 +78,6 @@ function showUserOptions(){
     $('#checkInOpt').removeAttr('hidden');
     $('#userReservationO').removeAttr('hidden');
     
-// show reservation button 
 
 }
 
@@ -86,7 +85,6 @@ function showAdminOptions(){
     
     $("#signInOpt").attr("hidden",true);
     $("#userFlightList").attr("hidden",true);
-    $("#publicRoutesList").attr("hidden",true);
     $('#userOptionsL').removeAttr('hidden');
     $('#adminFlightList').removeAttr('hidden');
     $('#planesList').removeAttr('hidden');
